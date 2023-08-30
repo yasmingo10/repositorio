@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500&family=Cambay:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #416BFF;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: #FFFAFA;
+}
+
+.container{
+    text-align: center;
+}
+
+h1{
+    padding: 30px 0 30px 0;
+    font-size: 30pt;
+}
+
+div{
+    padding-top: 15px;
+    font-size: 15pt;
+}
+
+h6{
+    font-size: 15pt;
+}
+
+p{
+    padding: 40px 0 0 0;
+}

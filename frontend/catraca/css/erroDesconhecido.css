@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Cambay:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #416BFF;
+    font-family: 'Cambay', sans-serif;
+    color: #fffafa;
+}
+
+.container{
+    text-align: center;
+}
+
+h1{
+    padding:35px 0px 15px 0px;
+    font-size: 30pt;
+}
+
+h6{
+    font-size: 15pt;
+}
+
+img{
+    padding: 20px 0 10px 0;
+}
+
+p{
+    padding: 40px 0 0 0;
+}

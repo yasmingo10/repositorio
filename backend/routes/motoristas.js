@@ -32,4 +32,6 @@ router.post("/cadastrar", async (req, res, next) =>{
   }
 });
 
+
+
 module.exports = router;

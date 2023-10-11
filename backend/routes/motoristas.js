@@ -1,7 +1,6 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
-
 const prisma = new PrismaClient();
 
 /* GET home page. */
@@ -11,7 +10,7 @@ router.get('/', async function(req, res, next) {
 });
 
 /* POST home page. */
-router.post("/cadastrar", async (req, res, next) =>{
+router.post("/cadastrar", async (req, res, next) => {
   try {
     const { nome, nascimento, sexo, foto, admissao } = req.body;
 
@@ -31,9 +30,5 @@ router.post("/cadastrar", async (req, res, next) =>{
     res.status(500).json({ error: "Erro ao cadastrar motorista."});
   }
 });
-
-
-
-
 
 module.exports = router;

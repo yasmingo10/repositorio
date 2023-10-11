@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 const motoristasRouter = require('./routes/motoristas')
 
 var app = express();
+const port = 3000;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +28,10 @@ app.use('/motoristas', motoristasRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
+});
+
+app.listen(port, () =>{
+console.log(`Servidor rodando na porta ${port}`);
 });
 
 // error handler

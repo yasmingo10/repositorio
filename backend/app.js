@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 const motoristasRouter = require('./routes/motoristas')
 const linhasRouter = require('./routes/linhas')
 const onibusRouter = require('./routes/onibus')
-const
+const passageirosRouter = require('./routes/passageiros')
 
 var app = express();
 const port = 3000;
@@ -29,6 +29,7 @@ app.use('/users', usersRouter);
 app.use('/motoristas', motoristasRouter);
 app.use('/linhas', linhasRouter);
 app.use('/onibus', onibusRouter);
+app.use('/passageiros', passageirosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

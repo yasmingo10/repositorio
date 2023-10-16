@@ -10,7 +10,7 @@ router.get('/', async function(req, res, next) {
     res.json(motoristas);
   } catch (error) {
     console.log(error);
-    res.status(500).json({error: "Erro ao recuperar motoristas."})
+    res.status(500).json({error:error.message})
   }
 });
 

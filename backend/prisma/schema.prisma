@@ -26,7 +26,6 @@ model g {
 
 model linha {
   id             Int      @id @default(autoincrement())
-  nome           String   @db.VarChar(55)
   localsaida     String   @db.VarChar(255)
   localdestino   String   @db.VarChar(255)
   horariosaida   DateTime @db.DateTime(0)

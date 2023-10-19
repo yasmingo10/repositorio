@@ -12,7 +12,7 @@
 <style>
     footer {
         padding: 25px 0;
-        background-color: #f0efee;
+        background-color: #f8f9fa;
     }
 
     .container-footer {
@@ -57,7 +57,7 @@
     }
 
     .footer-col ul li a:hover {
-        color: #068039;
+        color: #000000;
         padding-left: 10px;
     }
 
@@ -100,7 +100,7 @@
         font-size: 17px;
         outline: none;
         cursor: pointer;
-        color:#0d6efd;
+        color: #0d6efd;
         font-weight: bold;
         background-color: #fff;
         border: 1px solid #fff;
@@ -122,7 +122,7 @@
 <body>
     <div class="container">
         <header
-            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            class="d-flex flex-wrap align-items-center py-3 mb-4 border-bottom fixed-top bg-light-subtle justify-content-around">
             <div class="col-md-3 mb-2 mb-md-0">
                 <a href="index.html" class="d-inline-flex link-body-emphasis text-decoration-none">
                     <img class="bi" width="60" height="60" role="img" src="img/liv.svg">
@@ -130,17 +130,17 @@
             </div>
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2">Linhas</a></li>
-                <li><a href="#" class="nav-link px-2">Recarregue</a></li>
-                <li><a href="#" class="nav-link px-2">SAC</a></li>
-                <li><a href="#" class="nav-link px-2">About</a></li>
+                <li><a href="#horario" class="nav-link px-2">Linhas</a></li>
+                <li><a href="#recarregue" class="nav-link px-2">Recarregue</a></li>
+                <li><a href="#footer" class="nav-link px-2">SAC</a></li>
+                <li><a href="#footer" class="nav-link px-2">About</a></li>
             </ul>
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary me-2">Login</button>
+                <a href="user.html"><button type="button" class="btn btn-outline-primary me-2">Entrar</button></a>
             </div>
         </header>
-        <div class="carousel slide" data-bs-ride="false" id="carousel-1" style="height: 400px;">
-            <div class="carousel-inner">
+        <div class="carousel slide " data-bs-ride="false" id="carousel-1" style="height: 400px; margin-top: 100px;">
+            <div class="carousel-inner mt">
                 <div class="carousel-item active">
                     <img class="w-100 d-block" src="img/banner2.svg" alt="Slide Image" width="1186px" height="398px">
                     <a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span
@@ -210,8 +210,8 @@
                 <div class="col"></div>
             </div>
         </div>
-        <div class="container mt-4">
-            <h2 style="text-align: center; color: #0d6efd">TABELA HORÁRIA</h2>
+        <div class="container mt-2">
+            <h2 id="horario" style="text-align: center; color: #0d6efd">TABELA HORÁRIA</h2>
             <div class="mt-4" style="display: flex; justify-content: center;">
                 <p class="d-inline-flex gap-1" style="align-items: center;">
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
@@ -384,7 +384,699 @@
                 </div>
             </div>
         </div>
-        <div class="container mt-4">
+        <div class="container mt-2">
+            <div class="mt-2" style="display: flex; justify-content: center;">
+                <p class="d-inline-flex gap-1" style="align-items: center;">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        LINHA 100 – TINGA – OLARIA VIA RODOVIÁRIA
+                    </a>
+                </p>
+            </div>
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">DIAS ÚTEIS</th>
+                                <th colspan="2">SÁBADOS E FERIADOS</th>
+                                <th colspan="2">DOMINGOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>06:30</td>
+                                <td></td>
+                                <td>06:30</td>
+                                <td></td>
+                                <td>06:30</td>
+                            </tr>
+                            <tr>
+                                <td>06:30</td>
+                                <td>07:30</td>
+                                <td>06:30</td>
+                                <td>07:30</td>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                            </tr>
+                            <tr>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                            </tr>
+                            <tr>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                            </tr>
+                            <tr>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                            </tr>
+                            <tr>
+                                <td>10:30</td>
+                                <td>11:30</td>
+                                <td>10:30</td>
+                                <td>11:30</td>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                            </tr>
+                            <tr>
+                                <td>12:30</td>
+                                <td>13:30</td>
+                                <td>12:30</td>
+                                <td>13:30</td>
+                                <td>19:30</td>
+                                <td>20:30</td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                                <td>21:30</td>
+                                <td>22:30</td>
+                            </tr>
+                            <tr>
+                                <td>14:30</td>
+                                <td>15:30</td>
+                                <td>14:30</td>
+                                <td>15:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>16:30</td>
+                                <td>17:30</td>
+                                <td>16:30</td>
+                                <td>17:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>18:30</td>
+                                <td>19:30</td>
+                                <td>18:30</td>
+                                <td>19:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>19:30</td>
+                                <td>20:30</td>
+                                <td>20:30</td>
+                                <td>21:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>ITINERÁRIO RESUMIDO</h3>
+                    <p>SAÍDA TINGA: Avenida Marechal Deodoro da Fonseca, CIDE Tinga, E. E. Dr. Eduardo Correia da Costa,
+                        Paróquia São João Batista, Avenida Floriano Peixoto, Padaria Estrela, Cemitério Indaía, AME,
+                        Terminal Rodoviário,
+                        Casa de Saúde Stela Maris, Avenida Prestes Maia, Avenida da Praia (Centro), Fórum, UBS Sumaré,
+                        Terminal
+                        Sumaré, Laticínios Litoral Norte, Centro Universitário Módulo, bairro Casa Branca, Rua Antônio
+                        Henrique de
+                        Mesquita, CIDE Norte, E. E. Benedita Pinto Ferreira, Bairro Olaria, Avenida Pedro Januário
+                        Leite, Rua Benedito
+                        Roque dos Santos.</p>
+                    <p>SAÍDA OLARIA: Rua Benedito Roque dos Santos, CEI Olaria, Avenida Dr. Emiliano Campedeli, Rodovia
+                        Ubatuba – Caraguá, Avenida Siqueira Campos, CIASE Sumaré, UBS Sumaré, Fórum, Avenida da Praia
+                        (Centro),
+                        Avenida Prestes Maia, Casa de Saúde Stela Maris, AME, Terminal Rodoviário, Cemitério Indaiá,
+                        Padaria Estrela,
+                        Avenida Floriano Peixoto, Paróquia São João Batista, E. E. Dr. Eduardo Correia da Costa, CIDE
+                        Tinga, Avenida
+                        Marechal Deodoro da Fonseca.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-2">
+            <div class="mt-2" style="display: flex; justify-content: center;">
+                <p class="d-inline-flex gap-1" style="align-items: center;">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        LINHA 100 – TINGA – OLARIA VIA RODOVIÁRIA
+                    </a>
+                </p>
+            </div>
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">DIAS ÚTEIS</th>
+                                <th colspan="2">SÁBADOS E FERIADOS</th>
+                                <th colspan="2">DOMINGOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>06:30</td>
+                                <td></td>
+                                <td>06:30</td>
+                                <td></td>
+                                <td>06:30</td>
+                            </tr>
+                            <tr>
+                                <td>06:30</td>
+                                <td>07:30</td>
+                                <td>06:30</td>
+                                <td>07:30</td>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                            </tr>
+                            <tr>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                            </tr>
+                            <tr>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                            </tr>
+                            <tr>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                            </tr>
+                            <tr>
+                                <td>10:30</td>
+                                <td>11:30</td>
+                                <td>10:30</td>
+                                <td>11:30</td>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                            </tr>
+                            <tr>
+                                <td>12:30</td>
+                                <td>13:30</td>
+                                <td>12:30</td>
+                                <td>13:30</td>
+                                <td>19:30</td>
+                                <td>20:30</td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                                <td>21:30</td>
+                                <td>22:30</td>
+                            </tr>
+                            <tr>
+                                <td>14:30</td>
+                                <td>15:30</td>
+                                <td>14:30</td>
+                                <td>15:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>16:30</td>
+                                <td>17:30</td>
+                                <td>16:30</td>
+                                <td>17:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>18:30</td>
+                                <td>19:30</td>
+                                <td>18:30</td>
+                                <td>19:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>19:30</td>
+                                <td>20:30</td>
+                                <td>20:30</td>
+                                <td>21:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>ITINERÁRIO RESUMIDO</h3>
+                    <p>SAÍDA TINGA: Avenida Marechal Deodoro da Fonseca, CIDE Tinga, E. E. Dr. Eduardo Correia da Costa,
+                        Paróquia São João Batista, Avenida Floriano Peixoto, Padaria Estrela, Cemitério Indaía, AME,
+                        Terminal Rodoviário,
+                        Casa de Saúde Stela Maris, Avenida Prestes Maia, Avenida da Praia (Centro), Fórum, UBS Sumaré,
+                        Terminal
+                        Sumaré, Laticínios Litoral Norte, Centro Universitário Módulo, bairro Casa Branca, Rua Antônio
+                        Henrique de
+                        Mesquita, CIDE Norte, E. E. Benedita Pinto Ferreira, Bairro Olaria, Avenida Pedro Januário
+                        Leite, Rua Benedito
+                        Roque dos Santos.</p>
+                    <p>SAÍDA OLARIA: Rua Benedito Roque dos Santos, CEI Olaria, Avenida Dr. Emiliano Campedeli, Rodovia
+                        Ubatuba – Caraguá, Avenida Siqueira Campos, CIASE Sumaré, UBS Sumaré, Fórum, Avenida da Praia
+                        (Centro),
+                        Avenida Prestes Maia, Casa de Saúde Stela Maris, AME, Terminal Rodoviário, Cemitério Indaiá,
+                        Padaria Estrela,
+                        Avenida Floriano Peixoto, Paróquia São João Batista, E. E. Dr. Eduardo Correia da Costa, CIDE
+                        Tinga, Avenida
+                        Marechal Deodoro da Fonseca.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-2">
+            <div class="mt-2" style="display: flex; justify-content: center;">
+                <p class="d-inline-flex gap-1" style="align-items: center;">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        LINHA 100 – TINGA – OLARIA VIA RODOVIÁRIA
+                    </a>
+                </p>
+            </div>
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">DIAS ÚTEIS</th>
+                                <th colspan="2">SÁBADOS E FERIADOS</th>
+                                <th colspan="2">DOMINGOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>06:30</td>
+                                <td></td>
+                                <td>06:30</td>
+                                <td></td>
+                                <td>06:30</td>
+                            </tr>
+                            <tr>
+                                <td>06:30</td>
+                                <td>07:30</td>
+                                <td>06:30</td>
+                                <td>07:30</td>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                            </tr>
+                            <tr>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                            </tr>
+                            <tr>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                            </tr>
+                            <tr>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                            </tr>
+                            <tr>
+                                <td>10:30</td>
+                                <td>11:30</td>
+                                <td>10:30</td>
+                                <td>11:30</td>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                            </tr>
+                            <tr>
+                                <td>12:30</td>
+                                <td>13:30</td>
+                                <td>12:30</td>
+                                <td>13:30</td>
+                                <td>19:30</td>
+                                <td>20:30</td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                                <td>21:30</td>
+                                <td>22:30</td>
+                            </tr>
+                            <tr>
+                                <td>14:30</td>
+                                <td>15:30</td>
+                                <td>14:30</td>
+                                <td>15:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>16:30</td>
+                                <td>17:30</td>
+                                <td>16:30</td>
+                                <td>17:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>18:30</td>
+                                <td>19:30</td>
+                                <td>18:30</td>
+                                <td>19:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>19:30</td>
+                                <td>20:30</td>
+                                <td>20:30</td>
+                                <td>21:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>ITINERÁRIO RESUMIDO</h3>
+                    <p>SAÍDA TINGA: Avenida Marechal Deodoro da Fonseca, CIDE Tinga, E. E. Dr. Eduardo Correia da Costa,
+                        Paróquia São João Batista, Avenida Floriano Peixoto, Padaria Estrela, Cemitério Indaía, AME,
+                        Terminal Rodoviário,
+                        Casa de Saúde Stela Maris, Avenida Prestes Maia, Avenida da Praia (Centro), Fórum, UBS Sumaré,
+                        Terminal
+                        Sumaré, Laticínios Litoral Norte, Centro Universitário Módulo, bairro Casa Branca, Rua Antônio
+                        Henrique de
+                        Mesquita, CIDE Norte, E. E. Benedita Pinto Ferreira, Bairro Olaria, Avenida Pedro Januário
+                        Leite, Rua Benedito
+                        Roque dos Santos.</p>
+                    <p>SAÍDA OLARIA: Rua Benedito Roque dos Santos, CEI Olaria, Avenida Dr. Emiliano Campedeli, Rodovia
+                        Ubatuba – Caraguá, Avenida Siqueira Campos, CIASE Sumaré, UBS Sumaré, Fórum, Avenida da Praia
+                        (Centro),
+                        Avenida Prestes Maia, Casa de Saúde Stela Maris, AME, Terminal Rodoviário, Cemitério Indaiá,
+                        Padaria Estrela,
+                        Avenida Floriano Peixoto, Paróquia São João Batista, E. E. Dr. Eduardo Correia da Costa, CIDE
+                        Tinga, Avenida
+                        Marechal Deodoro da Fonseca.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-2">
+            <div class="mt-2" style="display: flex; justify-content: center;">
+                <p class="d-inline-flex gap-1" style="align-items: center;">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        LINHA 100 – TINGA – OLARIA VIA RODOVIÁRIA
+                    </a>
+                </p>
+            </div>
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">DIAS ÚTEIS</th>
+                                <th colspan="2">SÁBADOS E FERIADOS</th>
+                                <th colspan="2">DOMINGOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                                <td>Saída Tinga</td>
+                                <td>Saída Olaria</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>06:30</td>
+                                <td></td>
+                                <td>06:30</td>
+                                <td></td>
+                                <td>06:30</td>
+                            </tr>
+                            <tr>
+                                <td>06:30</td>
+                                <td>07:30</td>
+                                <td>06:30</td>
+                                <td>07:30</td>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                            </tr>
+                            <tr>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                                <td>07:30</td>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                            </tr>
+                            <tr>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>08:30</td>
+                                <td>09:30</td>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                            </tr>
+                            <tr>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                                <td>09:30</td>
+                                <td>10:30</td>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                            </tr>
+                            <tr>
+                                <td>10:30</td>
+                                <td>11:30</td>
+                                <td>10:30</td>
+                                <td>11:30</td>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                                <td>11:30</td>
+                                <td>12:30</td>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                            </tr>
+                            <tr>
+                                <td>12:30</td>
+                                <td>13:30</td>
+                                <td>12:30</td>
+                                <td>13:30</td>
+                                <td>19:30</td>
+                                <td>20:30</td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                                <td>13:30</td>
+                                <td>14:30</td>
+                                <td>21:30</td>
+                                <td>22:30</td>
+                            </tr>
+                            <tr>
+                                <td>14:30</td>
+                                <td>15:30</td>
+                                <td>14:30</td>
+                                <td>15:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                                <td>15:30</td>
+                                <td>16:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>16:30</td>
+                                <td>17:30</td>
+                                <td>16:30</td>
+                                <td>17:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                                <td>17:30</td>
+                                <td>18:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>18:30</td>
+                                <td>19:30</td>
+                                <td>18:30</td>
+                                <td>19:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>19:30</td>
+                                <td>20:30</td>
+                                <td>20:30</td>
+                                <td>21:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>ITINERÁRIO RESUMIDO</h3>
+                    <p>SAÍDA TINGA: Avenida Marechal Deodoro da Fonseca, CIDE Tinga, E. E. Dr. Eduardo Correia da Costa,
+                        Paróquia São João Batista, Avenida Floriano Peixoto, Padaria Estrela, Cemitério Indaía, AME,
+                        Terminal Rodoviário,
+                        Casa de Saúde Stela Maris, Avenida Prestes Maia, Avenida da Praia (Centro), Fórum, UBS Sumaré,
+                        Terminal
+                        Sumaré, Laticínios Litoral Norte, Centro Universitário Módulo, bairro Casa Branca, Rua Antônio
+                        Henrique de
+                        Mesquita, CIDE Norte, E. E. Benedita Pinto Ferreira, Bairro Olaria, Avenida Pedro Januário
+                        Leite, Rua Benedito
+                        Roque dos Santos.</p>
+                    <p>SAÍDA OLARIA: Rua Benedito Roque dos Santos, CEI Olaria, Avenida Dr. Emiliano Campedeli, Rodovia
+                        Ubatuba – Caraguá, Avenida Siqueira Campos, CIASE Sumaré, UBS Sumaré, Fórum, Avenida da Praia
+                        (Centro),
+                        Avenida Prestes Maia, Casa de Saúde Stela Maris, AME, Terminal Rodoviário, Cemitério Indaiá,
+                        Padaria Estrela,
+                        Avenida Floriano Peixoto, Paróquia São João Batista, E. E. Dr. Eduardo Correia da Costa, CIDE
+                        Tinga, Avenida
+                        Marechal Deodoro da Fonseca.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-2">
             <div class="row g-0">
                 <div class="col-md-6" style="background: #000;">
                     <div class="text-white p-4 p-md-5">
@@ -402,12 +1094,74 @@
                         class="w-100 h-100 fit-cover" src="img/banner3.jpg"></div>
             </div>
         </div>
-        <div class="container mt-4">
-            <h2 style="text-align: center; color: #0d6efd">TRANSPORTE</h2>
-
+    </div>
+    <div style="
+        background-image: url(img/parallax.svg);        
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+    ">
+        <div class="container mt-2">
+            <h2 id="recarregue" style="text-align: center; color: #f9f9f9">TRANSPORTE</h2>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Comum</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">Pague<small class="text-body-secondary fw-light">
+                                    R$4,60</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Para todos</li>
+                                <li>Disponível em toda área de atuação</li>
+                                <li>Carteirinha</li>
+                                <li>Uso Pessoal</li>
+                            </ul>
+                            <a href="recarga.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Recarregue</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Estudante</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">50%<small class="text-body-secondary fw-light">
+                                    R$2,50</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Metade do preço da tarifa</li>
+                                <li>Próprio para estudantes</li>
+                                <li>Apresente a carteirinha ao motorista</li>
+                                <li>Acessível</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-primary">Recarregue</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">Idosos</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title"><small class="text-body-secondary fw-light">
+                                    R$0,00</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Gratuito</li>
+                                <li>Para idosos a partir de 60 anos</li>
+                                <li>Apresente a carteirinha ao motorista</li>
+                                <li>Praticidade</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg btn-primary">Ajuda</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
     </div>
     <footer id="footer">
         <div class="container-footer">

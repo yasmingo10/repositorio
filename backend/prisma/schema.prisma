@@ -8,20 +8,17 @@ datasource db {
 }
 
 model cartao {
-  idcartao                             Int          @id @default(autoincrement())
-  tipo                                 String       @db.VarChar(50)
-  saldo                                Decimal      @db.Decimal(6, 2)
-  viagem_id                            Int
-  viagem                               viagem       @relation(fields: [viagem_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_cartao_viagem1")
-  passageiro_passageiro_cartaoTocartao passageiro[] @relation("passageiro_cartaoTocartao")
-  recarga_recarga_cartaoTocartao       recarga[]    @relation("recarga_cartaoTocartao")
+  idcartao                       Int         @id @default(autoincrement())
+  tipo                           String      @db.VarChar(50)
+  saldo                          Decimal     @db.Decimal(6, 2)
+  viagem_id                      Int?
+  passageiro_id                  BigInt?
+  passageiro                     passageiro? @relation(fields: [passageiro_id], references: [id], onUpdate: SetNull, map: "fk_cartao_passageiro1")
+  viagem                         viagem?     @relation(fields: [viagem_id], references: [id], onUpdate: SetNull, map: "fk_cartao_viagem1")
+  recarga_recarga_cartaoTocartao recarga[]   @relation("recarga_cartaoTocartao")
 
   @@index([viagem_id], map: "fk_cartao_viagem1_idx")
-}
-
-model g {
-  idG  Int     @id @default(autoincrement())
-  Gcol String? @db.VarChar(45)
+  @@index([passageiro_id], map: "fk_cartao_passageiro1_idx")
 }
 
 model linha {
@@ -50,22 +47,20 @@ model onibus {
 }
 
 model passageiro {
-  id                               BigInt   @id @default(autoincrement())
-  user_id                          Int
-  cartao                           Int
-  cpf                              String   @db.Char(11)
-  nome                             String   @db.VarChar(100)
-  nascimento                       DateTime @db.Date
-  sexo                             String?  @db.Char(1)
-  email                            String   @db.VarChar(250)
-  telefone                         String   @db.VarChar(20)
-  endereco                         String?  @db.VarChar(45)
-  cidade                           String   @db.VarChar(45)
-  estado                           String   @db.Char(2)
-  cartao_passageiro_cartaoTocartao cartao   @relation("passageiro_cartaoTocartao", fields: [cartao], references: [idcartao], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_cartao1")
-  user                             user     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_passageiro_user1")
+  id         BigInt   @id @default(autoincrement())
+  user_id    Int?
+  cpf        String   @db.Char(11)
+  nome       String   @db.VarChar(100)
+  nascimento DateTime @db.Date
+  sexo       String?  @db.Char(1)
+  email      String   @db.VarChar(250)
+  telefone   String   @db.VarChar(20)
+  endereco   String?  @db.VarChar(45)
+  cidade     String   @db.VarChar(45)
+  estado     String   @db.Char(2)
+  cartao     cartao?
+  user       user?    @relation(fields: [user_id], references: [id], onUpdate: SetNull, map: "fk_passageiro_user1")
 
-  @@index([cartao], map: "fk_passageiro_cartao1_idx")
   @@index([user_id], map: "fk_passageiro_user1_idx")
 }
 
@@ -73,8 +68,8 @@ model recarga {
   idrecarga                     Int      @id @default(autoincrement())
   valor                         Decimal  @db.Decimal(6, 2)
   data                          DateTime @db.DateTime(0)
-  cartao                        Int
-  cartao_recarga_cartaoTocartao cartao   @relation("recarga_cartaoTocartao", fields: [cartao], references: [idcartao], onDelete: NoAction, onUpdate: NoAction, map: "fk_recarga_cartao1")
+  cartao                        Int?
+  cartao_recarga_cartaoTocartao cartao?  @relation("recarga_cartaoTocartao", fields: [cartao], references: [idcartao], onUpdate: SetNull, map: "fk_recarga_cartao1")
 
   @@index([cartao], map: "fk_recarga_cartao1_idx")
 }
@@ -89,15 +84,15 @@ model user {
 }
 
 model viagem {
-  id           Int       @id @default(autoincrement())
-  datahora     DateTime  @db.DateTime(0)
-  linha_id     Int
-  motorista_id Int
-  onibus_id    Int
+  id           Int        @id @default(autoincrement())
+  datahora     DateTime   @db.DateTime(0)
+  linha_id     Int?
+  motorista_id Int?
+  onibus_id    Int?
   cartao       cartao[]
-  linha        linha     @relation(fields: [linha_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_viagem_linha1")
-  motorista    motorista @relation(fields: [motorista_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_viagem_motorista1")
-  onibus       onibus    @relation(fields: [onibus_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_viagem_onibus1")
+  linha        linha?     @relation(fields: [linha_id], references: [id], onUpdate: SetNull, map: "fk_viagem_linha1")
+  motorista    motorista? @relation(fields: [motorista_id], references: [id], onUpdate: SetNull, map: "fk_viagem_motorista1")
+  onibus       onibus?    @relation(fields: [onibus_id], references: [id], onUpdate: SetNull, map: "fk_viagem_onibus1")
 
   @@index([linha_id], map: "fk_viagem_linha1_idx")
   @@index([motorista_id], map: "fk_viagem_motorista1_idx")

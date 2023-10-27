@@ -28,6 +28,7 @@ router.post('/cadastrar', async function(req, res, next) {
       endereco,
       cidade,
       estado,
+      cartao,
     } = req.body;
     console.log(req.body);
     const novoPassageiro = await prisma.passageiro.create({
@@ -42,7 +43,7 @@ router.post('/cadastrar', async function(req, res, next) {
         endereco,
         cidade,
         estado,
-        cartao_passageiro_cartaoTocartao: req.body.cartao ? { create: req.body.cartao } : undefined,
+        cartao: cartao ? { create: cartao } : undefined,
       },
     });
     res.json(novoPassageiro);

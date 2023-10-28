@@ -1,0 +1,111 @@
+
+
+
+/*Início Rodapé*/
+footer {
+    padding: 25px 0;
+    background-color: #f8f9fa;
+}
+
+.container-footer {
+    max-width: 100%;
+    padding: 0 4%;
+    margin: auto;
+}
+
+.row-footer {
+    display: flex;
+    flex: wrap;
+}
+
+.footer-col {
+    padding: 2px 15px;
+    width: 35%;
+}
+
+.footer-col h4 {
+    color: #0d6efd;
+    font-size: 22px;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin: 10px 0;
+}
+
+.footer-col ul li a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #0d6efd;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #000000;
+    padding-left: 10px;
+}
+
+.footer-col .rede-social {
+    margin-top: 30px;
+}
+
+.footer-col .rede-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    text-decoration: none;
+    color: #0d6efd;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    transition: all 0.3s ease;
+    margin: 0 6px;
+}
+
+.footer-col .rede-social a:hover {
+    color: #061e42;
+    background-color: #fff;
+}
+
+.footer-col .form-insc input {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    outline: none;
+    color: #888;
+    border: 1px solid #fff;
+}
+
+.footer-col .form-insc button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 17px;
+    outline: none;
+    cursor: pointer;
+    color: #0d6efd;
+    font-weight: bold;
+    background-color: #fff;
+    border: 1px solid #fff;
+}
+
+.direitos {
+    padding: 5px 0;
+    text-align: center;
+    font-size: 13px;
+    background-color: #f8f9fa;
+}
+
+.direitos a {
+    text-decoration: none;
+    color: #0d6efd;
+}

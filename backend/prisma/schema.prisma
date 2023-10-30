@@ -12,7 +12,7 @@ model cartao {
   tipo                           String      @db.VarChar(50)
   saldo                          Decimal     @db.Decimal(6, 2)
   viagem_id                      Int?
-  passageiro_id                  Int?     @unique
+  passageiro_id                  BigInt?
   passageiro                     passageiro? @relation(fields: [passageiro_id], references: [id], onUpdate: SetNull, map: "fk_cartao_passageiro1")
   viagem                         viagem?     @relation(fields: [viagem_id], references: [id], onUpdate: SetNull, map: "fk_cartao_viagem1")
   recarga_recarga_cartaoTocartao recarga[]   @relation("recarga_cartaoTocartao")
@@ -35,7 +35,7 @@ model motorista {
   nome       String   @db.VarChar(255)
   nascimento DateTime @db.Date
   sexo       String?  @db.Char(1)
-  foto       String   @db.VarChar(250)
+  foto       String?  @db.VarChar(250)
   admissao   DateTime @db.Date
   viagem     viagem[]
 }
@@ -47,9 +47,9 @@ model onibus {
 }
 
 model passageiro {
-  id         Int   @id @default(autoincrement())
+  id         BigInt   @id @default(autoincrement())
   user_id    Int?
-  cpf        String   @unique @db.Char(11)
+  cpf        String   @db.Char(11)
   nome       String   @db.VarChar(100)
   nascimento DateTime @db.Date
   sexo       String?  @db.Char(1)
@@ -58,7 +58,7 @@ model passageiro {
   endereco   String?  @db.VarChar(45)
   cidade     String   @db.VarChar(45)
   estado     String   @db.Char(2)
-  cartao     cartao?
+  cartao     cartao[]
   user       user?    @relation(fields: [user_id], references: [id], onUpdate: SetNull, map: "fk_passageiro_user1")
 
   @@index([user_id], map: "fk_passageiro_user1_idx")

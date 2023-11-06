@@ -26,3 +26,8 @@ const formatarRecarga = (campoInput) => {
     valor = valor.replace(/(\.,*)\./g, '$1'); 
     campoInput.value = valor;
 };
+
+//ATUALIZAR O VALOR DE ACORDO COM O PACOTE
+function atualizarValor(novoValor) {
+    document.getElementById('valor').value = novoValor;
+}

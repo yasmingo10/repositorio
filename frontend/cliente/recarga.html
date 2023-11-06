@@ -37,43 +37,6 @@
         <h5 style="color: #696b6e;">Recarregar seu cartão é uma tarefa essencial e conveniente que  lhe da autonomia e controle financeiro.</h5>
         <hr>
 
-        <!-- <h1 style="color: #0d6efd;" class="mt-4">Qual é o seu tipo de recarga?</h1>
-
-        <main class="mt-4 d-flex text-center ">
-            <div class="row d-flex justify-content-evenly">
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="img/comum.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Comum</h5>
-                          <a href="#" class="btn btn-primary">Desejo Recarregar</a>
-                        </div>
-                      </div>
-                </div>
-                <div class="col"><div class="card" style="width: 18rem;">
-                    <img src="img/estudante.jpg" class="card-img-top" alt="..." height="141px">
-                    <div class="card-body">
-                      <h5 class="card-title">Estudante</h5>
-                      <a href="#" class="btn btn-primary">Desejo Recarregar</a>
-                    </div>
-                  </div></div>
-                  <div class="col"><div class="card" style="width: 18rem;">
-                    <img src="img/idoso.jpg" class="card-img-top" alt="..." height="141px">
-                    <div class="card-body">
-                      <h5 class="card-title">Sou Idoso</h5>
-                      <a href="#" class="btn btn-primary">Solicitar</a>
-                    </div>
-                  </div></div>
-                  <div class="col"><div class="card" style="width: 18rem;">
-                    <img src="img/pcd.jpg" class="card-img-top" alt="..." height="141px">
-                    <div class="card-body">
-                      <h5 class="card-title">Sou PCD</h5>
-                      <a href="#" class="btn btn-primary">Solicitar</a>
-                    </div>
-                  </div></div>
-            </div>
-    
-        </main> -->
         <main class="form-signin w-100 m-auto d-flex justify-content-center">
        <form>
               <h2 style="color: #0d6efd;" class="h2 mb-3">Desejo recarregar!</h2>
@@ -87,12 +50,54 @@
                 <label for="valor">Valor da recarga (R$)</label>
               </div>
               <button class="btn mt-2 btn-primary w-100 py-2" type="submit" value="efetuar">Efetuar recarga</button>
-              <p class="mt-5 mb-3 text-body-secondary">©2023</p>
             </form>
         </main>
+
+        <h1 style="color: #0d6efd;" class="mt-4">Pacotes de recarga</h1>
+
+        <main class="mt-4 d-flex text-center mb-4 ">
+            <div class="row d-flex justify-content-evenly">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="img/comum.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">20 Passes <small class="text-body-secondary fw-light">
+                            R$50,00</small></h5>
+                          <a href="#" class="btn btn-primary" onclick="atualizarValor('50,00')">Selecionar</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col"><div class="card" style="width: 18rem;">
+                    <img src="img/estudante.jpg" class="card-img-top" alt="..." height="141px">
+                    <div class="card-body">
+                      <h5 class="card-title">30 Passes <small class="text-body-secondary fw-light">
+                        R$75,60</small></h5>
+                      <a href="#" class="btn btn-primary" onclick="atualizarValor('75,60')">Selecionar</a>
+                    </div>
+                  </div></div>
+                  <div class="col"><div class="card" style="width: 18rem;">
+                    <img src="img/idoso.jpg" class="card-img-top" alt="..." height="141px">
+                    <div class="card-body">
+                      <h5 class="card-title">40 Passes <small class="text-body-secondary fw-light">
+                        R$100,00</small></h5>
+                      <a href="#" class="btn btn-primary" onclick="atualizarValor('100,00')">Selecionar</a>
+                    </div>
+                  </div></div>
+                  <div class="col"><div class="card" style="width: 18rem;">
+                    <img src="img/pcd.jpg" class="card-img-top" alt="..." height="141px">
+                    <div class="card-body">
+                      <h5 class="card-title">50 Passes <small class="text-body-secondary fw-light">
+                        R$125,00</small></h5>
+                      <a href="#" class="btn btn-primary" onclick="atualizarValor('125,00')">Selecionar</a>
+                    </div>
+                  </div></div>
+            </div>
+    
+        </main> 
     </div>
-    <footer id="footer">
-        <div class="container-footer">
+   
+    <footer id="footer" >
+        <div class="container-footer" style="margin-top: 15px;">
             <div class="row-footer">
                 <!--Col 1-->
                 <div class="footer-col">
@@ -133,6 +138,7 @@
             </div>
 
         </div>
+
     </footer>
     <div class="direitos">
         <a href="#">Liv © 2023 Todos os direitos reservados.</a>

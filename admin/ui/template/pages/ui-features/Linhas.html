@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Corona Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          <a class="sidebar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <img class="img-xs rounded-circle " src="../../assets/images/faces/face15.jpg" alt="">
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">Nome</h5>
+                  <span>Administrador</span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item nav-category">
+            <span class="nav-link">Navegação</span>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="../../index.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Gerenciamento</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Admin de Usuarios</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/Motorista.html">Motorista</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/Passe.html">Passe</a></li>
+                <li class="nav-item"> <a class="nav-link"   href="../../pages/ui-features/Linhas.html">Linhas</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/Onibus.html">Onibus</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+              <span class="mdi mdi-menu"></span>
+            </button>
+            <ul class="navbar-nav w-100">
+              <li class="nav-item w-100">
+                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                  <input type="text" class="form-control" placeholder="Pesquisa">
+                </form>
+              </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right">
+              </li>
+
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span class="mdi mdi-format-line-spacing"></span>
+            </button>
+          </div>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Cadastro de Viagem </h3>
+              <nav aria-label="breadcrumb">
+
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Formulario de Viagem</h4>
+                    <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputLocaldesaida">Local de saida</label>
+                        <input type="text" class="form-control" id="exampleInputLocaldesaida" placeholder="Local de saida">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputLocaldeDestino">Local de Destino</label>
+                        <input type="email" class="form-control" id="exampleInputLocaldeDestino" placeholder="Local de Destino">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputHorariodesaida">Horario de saida</label>
+                        <input type="time" class="form-control" id="exampleInputHorariodesaida" placeholder="Horario de saida">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputHorariodechegada">Horario de chegada</label>
+                        <input type="time" class="form-control" id="exampleInputHorariodechegada" placeholder="Horario de chegada">
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Enviar</button>
+                      <button class="btn btn-dark">Cancelar</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Onibus Ativos</h4>
+              </p>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th> Numero da Linha </th>
+                      <th> Placa do Automovel </th>
+                      <th> Identificador </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> 77 </td>
+                      <td> FWZ-3120 </td>
+                      <td> 09759936033 </td>
+                    </tr>
+                    <tr>
+                      <td> 245 </td>
+                      <td> DNP-6310 </td>
+                      <td> 89705552065 </td>
+                    </tr>
+                    <tr>
+                      <td> 138 </td>
+                      <td> CRV-1339 </td>
+                      <td> 62935291946 </td>
+                    </tr>
+                    <tr>
+                      <td> 79 </td>
+                      <td> BLX-2971 </td>
+                      <td> 62935291946 </td>
+                    </tr>
+                    <tr>
+                      <td> 160 </td>
+                      <td> BUP-0255 </td>
+                      <td> 85977372170 </td>
+                    </tr>
+                    <tr>
+                      <td>  123 </td>
+                      <td> FEQ-4081 </td>
+                      <td>  73530115560 </td>
+                    </tr>
+                    <tr>
+                      <td> 150 </td>
+                      <td> BFK-7081 </td>
+                      <td> 84829242717 </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © empresa.com 2023</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/settings.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- endinject -->
+  </body>
+</html>

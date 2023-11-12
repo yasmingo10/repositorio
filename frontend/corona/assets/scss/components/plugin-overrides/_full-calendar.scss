@@ -36,7 +36,7 @@
       background-color: $white;
       margin: 0;
       &.fc-state-active {
-        color: $danger;        
+        color: theme-color(danger);        
       }
     }
   }
@@ -81,14 +81,14 @@
     color: $white;
     padding: .5rem;
     &.fc-start {
-      background: $primary; 
+      background: theme-color(primary); 
       border-radius: 4px;
-      border-left: 4px solid $primary;        
+      border-left: 4px solid theme-color(primary);        
     }
     &.fc-not-start,
     &.fc-not-end {
-      background: $danger;
-      border-left: 4px solid $danger;
+      background: theme-color(danger);
+      border-left: 4px solid theme-color(danger);
       padding-left: .5rem;
     }
     &.fc-not-end {
@@ -111,19 +111,19 @@
     border-radius: 0;
     margin-bottom: 10px;
     &:nth-child(1) {
-      border-color: $primary;
+      border-color: theme-color(primary);
     }
     &:nth-child(2) {
-      border-color: $danger;
+      border-color: theme-color(danger);
     }
     &:nth-child(3) {
-      border-color: $success;
+      border-color: theme-color(success);
     }
     &:nth-child(4) {
-      border-color: $info;
+      border-color: theme-color(info);
     }
     &:nth-child(4) {
-      border-color: $warning;
+      border-color: theme-color(warning);
     }
   }
 }

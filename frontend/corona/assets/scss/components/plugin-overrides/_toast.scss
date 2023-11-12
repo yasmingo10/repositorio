@@ -2,15 +2,15 @@
 
 .jq-toast-wrap {
     .jq-icon-success {
-        background-color: $success;
+        background-color: theme-color("success");
     }
     .jq-icon-info {
-        background-color: $info;
+        background-color: theme-color("info");
     }
     .jq-icon-warning {
-        background-color: $warning;
+        background-color: theme-color("warning");
     }
     .jq-icon-error {
-        background-color: $danger;
+        background-color: theme-color("danger");
     }
 }

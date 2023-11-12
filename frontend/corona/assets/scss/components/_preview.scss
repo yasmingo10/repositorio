@@ -29,7 +29,7 @@
           font-size: 1.125rem;
           margin: 0;
           .rtl & {
-            @extend .ms-0;
+            @extend .ml-0;
           }
         }
       }

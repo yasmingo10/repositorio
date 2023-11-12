@@ -51,14 +51,14 @@
 		background: transparent;
 		.form-control,
 		.input-group-text {
-			border-color: $secondary;
+			border-color: theme-color(secondary);
 			&:focus,
 			&:active {
-				border-color: $secondary;
+				border-color: theme-color(secondary);
 			}
 		}
 		select {
-			outline-color: $secondary;
+			outline-color: theme-color(secondary);
 		}
 	}
 	&.auth-img-bg {
@@ -106,7 +106,7 @@
 		margin-bottom: 0;
 
 		a {
-			color: $primary;
+			color: theme-color(primary);
 		}
 	}
 	&.login-2,

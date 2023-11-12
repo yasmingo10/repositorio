@@ -11,7 +11,7 @@
       &.br-selected,
       &.br-active {
         &:after {
-          color:  $warning;
+          color:  theme-color(warning);
         }
       }
     }
@@ -26,10 +26,10 @@
   .br-widget {
     a {
       background-color: lighten(black, 30%);
-      color:  $warning;
+      color:  theme-color(warning);
       &.br-selected,
       &.br-active {
-        background-color: $warning;
+        background-color: theme-color(warning);
       }
     }
   }
@@ -43,8 +43,8 @@
       background: transparent;
       &.br-selected,
       &.br-active {
-        color: $warning;
-        border-color: $warning;
+        color: theme-color(warning);
+        border-color: theme-color(warning);
       }
     }
   }

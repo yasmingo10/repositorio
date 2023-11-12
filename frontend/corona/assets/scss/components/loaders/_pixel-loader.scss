@@ -2,8 +2,8 @@
 .pixel-loader {
     width: 10px;
     height: 10px;
-    background: $warning;
-    color: $warning;
+    background: theme-color(warning);
+    color: theme-color(warning);
     margin: 80px auto;
     box-shadow: 15px 15px  0 0,
                   -15px -15px  0 0,

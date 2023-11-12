@@ -79,7 +79,7 @@ select {
   }
   &.has-danger {
     .form-control {
-      border-color: $danger;
+      border-color: theme-color(danger);
     }
   }
   .file-upload-default {

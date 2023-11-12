@@ -111,25 +111,27 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Formulario de Viagem</h4>
-                    <form class="forms-sample">
+                    <form id="formLinhas" class="forms-sample">
                       <div class="form-group">
-                        <label for="exampleInputLocaldesaida">Local de saida</label>
-                        <input type="text" class="form-control" id="exampleInputLocaldesaida" placeholder="Local de saida">
+                        <label for="localsaida">Local de saida</label>
+                        <input type="text" class="form-control" id="localsaida" name="localsaida" placeholder="Local de saida">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputLocaldeDestino">Local de Destino</label>
-                        <input type="email" class="form-control" id="exampleInputLocaldeDestino" placeholder="Local de Destino">
+                        <label for="localdestino">Local de Destino</label>
+                        <input type="text" class="form-control" id="localdestino" name="localdestino" placeholder="Local de Destino">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputHorariodesaida">Horario de saida</label>
-                        <input type="time" class="form-control" id="exampleInputHorariodesaida" placeholder="Horario de saida">
+                        <label for="horariosaida">Horario de saida</label>
+                        <input type="time" class="form-control" id="horariosaida" name="horariosaida" placeholder="Horario de saida">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputHorariodechegada">Horario de chegada</label>
-                        <input type="time" class="form-control" id="exampleInputHorariodechegada" placeholder="Horario de chegada">
+                        <label for="horariochegada">Horario de chegada</label>
+                        <input type="time" class="form-control" id="horariochegada" name="horariochegada" placeholder="Horario de chegada">
                       </div>
-                      <button type="submit" class="btn btn-primary mr-2">Enviar</button>
-                      <button class="btn btn-dark">Cancelar</button>
+                      <button type="submit" class="btn btn-primary mr-2">Cadastrar</button>
+                      <button class="btn btn-primary mr-2">Editar</button>
+                      <button class="btn btn-danger mr-2">Excluir</button>
+                      <button class="btn btn-dark mr-2">Cancelar</button>
                     </form>
                   </div>
                 </div>

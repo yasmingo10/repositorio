@@ -101,7 +101,7 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Cadastro de novos motoristas </h3>
+              <h3 class="page-title"> Cadastro de Onibus</h3>
               <nav aria-label="breadcrumb">
 
               </nav>
@@ -111,38 +111,23 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Formulario de Cadastro</h4>
-                    <form class="forms-sample">
+                    <form id="formOnibus" class="forms-sample">
                       <div class="form-group">
-                        <label for="exampleInputName1">Nome</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nome">
+                        <label for="linha">Numero da Linha</label>
+                        <input type="number" class="form-control" id="linha" name="linha" placeholder="Numero da Linha">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail3">Data de Nascimento</label>
-                        <input class="form-control" placeholder="dd/mm/yyyy" type="date">
+                        <label for="placa">Placa do Automovel</label>
+                        <input type="text" class="form-control" id="placa" name="placa" placeholder="Placa do Automovel">
                       </div>
                       <div class="form-group">
-                        <label for="exampleSelectGender">Gênero</label>
-                        <select class="form-control" id="exampleSelectGender">
-                          <option>Masculino</option>
-                          <option>Feminino</option>
-                        </select>
+                        <label for="id">Identificador</label>
+                        <input type="text" class="form-control" id="id" name="id" placeholder="Identificador">
                       </div>
-                      <div class="form-group">
-                        <label>Imagem</label>
-                        <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                          <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Imagem">
-                          <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">Enviar</button>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputEmail3">Data de Adimissão</label>
-                        <input class="form-control" placeholder="dd/mm/yyyy" type="date">
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Enviar</button>
-                      <button class="btn btn-dark">Cancelar</button>
+                      <button type="submit" class="btn btn-primary mr-2">Cadastrar</button>
+                      <button class="btn btn-primary mr-2">Editar</button>
+                      <button class="btn btn-danger mr-2">Excluir</button>
+                      <button class="btn btn-dark mr-2">Cancelar</button>
                     </form>
                   </div>
                 </div>
@@ -150,74 +135,52 @@
           </div>
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Motoristas Ativos</h4>
+              <h4 class="card-title">Onibus Ativos</h4>
               </p>
               <div class="table-responsive">
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th> Foto </th>
-                      <th> Nome </th>
+                      <th> Numero da Linha </th>
+                      <th> Placa do Automovel </th>
                       <th> Identificador </th>
-                      <th> Data de Entrada </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="py-1">
-                        <img src="../../assets/images/faces-clipart/pic-1.png" alt="image">
-                      </td>
-                      <td> Herman Beck </td>
                       <td> 77 </td>
-                      <td> May 15, 2015 </td>
+                      <td> FWZ-3120 </td>
+                      <td> 09759936033 </td>
                     </tr>
                     <tr>
-                      <td class="py-1">
-                        <img src="../../assets/images/faces-clipart/pic-2.png" alt="image">
-                      </td>
-                      <td> Messsy Adam </td>
                       <td> 245 </td>
-                      <td> July 1, 2015 </td>
+                      <td> DNP-6310 </td>
+                      <td> 89705552065 </td>
                     </tr>
                     <tr>
-                      <td class="py-1">
-                        <img src="../../assets/images/faces-clipart/pic-3.png" alt="image">
-                      </td>
-                      <td> John Richards </td>
                       <td> 138 </td>
-                      <td> Apr 12, 2015 </td>
+                      <td> CRV-1339 </td>
+                      <td> 62935291946 </td>
                     </tr>
                     <tr>
-                      <td class="py-1">
-                        <img src="../../assets/images/faces-clipart/pic-4.png" alt="image">
-                      </td>
-                      <td> Peter Meggik </td>
                       <td> 79 </td>
-                      <td> May 15, 2015 </td>
+                      <td> BLX-2971 </td>
+                      <td> 62935291946 </td>
                     </tr>
                     <tr>
-                      <td class="py-1">
-                        <img src="../../assets/images/faces-clipart/pic-1.png" alt="image">
-                      </td>
-                      <td> Edward </td>
                       <td> 160 </td>
-                      <td> May 03, 2015 </td>
+                      <td> BUP-0255 </td>
+                      <td> 85977372170 </td>
                     </tr>
                     <tr>
-                      <td class="py-1">
-                        <img src="../../assets/images/faces-clipart/pic-2.png" alt="image">
-                      </td>
-                      <td> John Doe </td>
                       <td>  123 </td>
-                      <td> April 05, 2015 </td>
+                      <td> FEQ-4081 </td>
+                      <td>  73530115560 </td>
                     </tr>
                     <tr>
-                      <td class="py-1">
-                        <img src="../../assets/images/faces-clipart/pic-3.png" alt="image">
-                      </td>
-                      <td> Henry Tom </td>
-                      <td>150</td>
-                      <td> June 16, 2015 </td>
+                      <td> 150 </td>
+                      <td> BFK-7081 </td>
+                      <td> 84829242717 </td>
                     </tr>
                   </tbody>
                 </table>

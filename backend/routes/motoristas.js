@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const uploadSingle = require('../middleware/uploadSingle')
+const upload = require('../middleware/fileUpload')
 
 /* GET*/
 router.get('/', async function(req, res, next) {
@@ -16,32 +16,22 @@ router.get('/', async function(req, res, next) {
 });
 
 /* POST */
-router.post("/cadastrar", uploadSingle, async (req, res, next) => {
+router.post("/cadastrar", upload.single("foto"), async (req, res) => {
   try {
-    const { nome, nascimento, sexo, foto, admissao } = req.body;
-    const upload = req.upload || null;
-    if (upload) {
-      console.log(upload);;
-      data.foto = upload.customPath
-    }
+    const nome = req.body.nome || null;
+    const nascimento = new Date(req.body.nascimento).toISOString();
+    const sexo = req.body.sexo || null;
+    const foto = req.file?.path;
+    const admissao = new Date(req.body.admissao).toISOString();
+    
+    const data = { nome, nascimento, sexo, foto, admissao };
 
-    const novoMotorista = await prisma.motorista.create({
-      data: {
-        nome,
-        nascimento, 
-        sexo, 
-        foto, 
-        admissao 
-      },
-    });
-
-    const baseUrl = `${req.protocol}://${req.headers.host}`;
-    motorista.foto = `${baseUrl}/${user.image}`;
-
-    res.json(novoMotorista);
+    const motorista = await prisma.motorista.create({ data });
+    console.log(req.file);
+    res.json({ motorista });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Erro ao cadastrar motorista!"});
+    res.status(500).json({ mensagem: "Não foi possível realizar o cadastro do motorista." });
   }
 });
 

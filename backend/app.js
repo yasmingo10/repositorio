@@ -17,7 +17,7 @@ const viagensRouter =require('./routes/viagens')
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "http://localhost:4000",
   optionsSuccessStatus: 200,
   credentials: true,
 };
@@ -28,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static('uploads'));
 
 app.set('view engine', 'ejs');
 

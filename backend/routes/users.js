@@ -3,7 +3,6 @@ const router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-// Obtém todos os usuários
 router.get('/users', async function(req, res, next) {
   try {
     const users = await prisma.user.findMany();
@@ -14,7 +13,6 @@ router.get('/users', async function(req, res, next) {
   }
 });
 
-// Cria um novo usuário
 router.post('/users/cadastrar', async function(req, res, next) {
   try {
     const { nome, email, telefone, senha } = req.body;
@@ -34,7 +32,6 @@ router.post('/users/cadastrar', async function(req, res, next) {
   }
 });
 
-// Obtém um usuário pelo ID
 router.get('/users/:id', async function(req, res, next) {
   try {
     const id = parseInt(req.params.id);
@@ -54,7 +51,6 @@ router.get('/users/:id', async function(req, res, next) {
   }
 });
 
-// Atualiza um usuário pelo ID
 router.put('/users/:id', async function(req, res, next) {
   try {
     const id = parseInt(req.params.id);
@@ -78,7 +74,6 @@ router.put('/users/:id', async function(req, res, next) {
   }
 });
 
-// Deleta um usuário pelo ID
 router.delete('/users/:id', async function(req, res, next) {
   try {
     const id = parseInt(req.params.id);
@@ -94,7 +89,6 @@ router.delete('/users/:id', async function(req, res, next) {
   }
 });
 
-// Rota para qualquer outro método não suportado
 router.all('*', (req, res) => {
   res.status(501).end();
 });

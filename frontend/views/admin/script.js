@@ -18,7 +18,6 @@ document.getElementById("formMotoristas").addEventListener("submit", function(ev
         .then(response => response.json())
         .then(data => {
             console.log("Dados enviados com sucesso:", data);
-            // Faça algo com a resposta do backend, se necessário
         })
         .catch(error => {
             console.error("Erro ao enviar dados:", error);

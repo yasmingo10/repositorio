@@ -17,13 +17,10 @@ router.get('/', async function(req, res, next) {
 /* POST */
 router.post("/cadastrar", async (req, res, next) => {
   try {
-    const { placa } = req.body;
-
-    const novoOnibus = await prisma.onibus.create({
-      data: {
-        placa 
-      },
-    });
+    const placa = req.body.placa;
+    console.log(req.body);
+    const data = { placa };
+    const novoOnibus = await prisma.onibus.create({data});
 
     res.json(novoOnibus);
   } catch (error) {

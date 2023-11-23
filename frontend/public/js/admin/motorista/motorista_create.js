@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("#formMotoristas");
     form.addEventListener("submit", async (event) => {
+    
         event.preventDefault();
         const formData = new FormData(form);
         if (form.checkValidity()) {

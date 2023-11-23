@@ -1,55 +1,43 @@
 const express = require('express');
 const router = express.Router();
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Obtém todos os passageiros
 router.get('/', async function(req, res, next) {
+  console.log("ok");
   try {
     const passageiros = await prisma.passageiro.findMany();
     res.json(passageiros);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message, stack: error.stack });
   }
 });
 
 // Cria um novo passageiro
 router.post('/cadastrar', async function(req, res, next) {
   try {
-    const {
-      user_id,
-      cpf,
-      nome,
-      nascimento,
-      sexo,
-      email,
-      telefone,
-      endereco,
-      cidade,
-      estado,
-      cartao,
-    } = req.body;
+    const cpf = req.body.cpf;
+    const nome = req.body.nome;
+    const nascimento = new Date(req.body.nascimento).toISOString();
+    const sexo = req.body.sexo;
+    const email = req.body.email;
+    const telefone = req.body.telefone;
+    const endereco = req.body.endereco;
+    const cidade = req.body.cidade;
+    const estado = req.body.estado;
+    const cartao = req.body.cartao || null;
+
+    const data = { cpf, nome, nascimento, sexo, email, telefone, endereco, cidade, estado, cartao };
+    const novoPassageiro = await prisma.passageiro.create({ data });
     console.log(req.body);
-    const novoPassageiro = await prisma.passageiro.create({
-      data: {
-        user_id,
-        cpf,
-        nome,
-        nascimento,
-        sexo,
-        email,
-        telefone,
-        endereco,
-        cidade,
-        estado,
-        cartao: cartao ? { create: cartao } : undefined,
-      },
-    });
+    
     res.json(novoPassageiro);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao cadastrar passageiro!' });
+    next(error);
   }
 });
 

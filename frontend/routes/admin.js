@@ -15,4 +15,12 @@ router.get('/onibus/cadastrar', function(req, res, next) {
     res.sendFile("cadastrar.html", { root: 'views/admin/onibus' });
 });
 
+router.get('/linha/cadastrar', function(req, res, next) {
+    res.sendFile("cadastrar.html", { root: 'views/admin/linha' });
+});
+
+router.get('/passageiro/cadastrar', function(req, res, next) {
+    res.sendFile("cadastrar.html", { root: 'views/admin/passageiro' });
+});
+
 module.exports = router;

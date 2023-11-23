@@ -113,6 +113,10 @@
                     <h4 class="card-title">Formulario de Viagem</h4>
                     <form id="formLinhas" class="forms-sample">
                       <div class="form-group">
+                        <label for="nome">Nome da Linha</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da Linha">
+                      </div>
+                      <div class="form-group">
                         <label for="localsaida">Local de saida</label>
                         <input type="text" class="form-control" id="localsaida" name="localsaida" placeholder="Local de saida">
                       </div>
@@ -204,18 +208,7 @@
       </div>
       <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="../../assets/js/off-canvas.js"></script>
-    <script src="../../assets/js/hoverable-collapse.js"></script>
-    <script src="../../assets/js/misc.js"></script>
-    <script src="../../assets/js/settings.js"></script>
-    <script src="../../assets/js/todolist.js"></script>
-    <!-- endinject -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/admin/linhas/linhas_create.js"></script>
   </body>
 </html>

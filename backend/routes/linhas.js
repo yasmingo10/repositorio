@@ -17,19 +17,23 @@ router.get('/', async function(req, res, next) {
 /* POST */
 router.post("/cadastrar", async (req, res, next) => {
   try {
-    const { nome, localsaida, localdestino, horariosaida, horariochegada } = req.body;
+    const nome = req.body.nome || null;
+    const localsaida = req.body.localsaida || null;
+    const localdestino =req.body.localdestino || null;
+    const isValidTime = (str) => /^([01]\d|2[0-3]):([0-5]\d)$/.test(str);
 
-    const novaLinha = await prisma.linha.create({
-      data: {
-        nome,
-        localsaida, 
-        localdestino, 
-        horariosaida, 
-        horariochegada 
-      },
-    });
+    const horariosaida = isValidTime(req.body.horariosaida)
+      ? new Date(`1970-01-01T${req.body.horariosaida}:00`).toISOString()
+      : null;
 
-    res.json(novaLinha);
+    const horariochegada = isValidTime(req.body.horariochegada)
+      ? new Date(`1970-01-01T${req.body.horariochegada}:00`).toISOString()
+      : null;
+    const data = { nome, localsaida, localdestino, horariosaida, horariochegada };
+
+    const linha = await prisma.linha.create({ data });
+
+    res.json(linha);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Erro ao cadastrar linha!"});

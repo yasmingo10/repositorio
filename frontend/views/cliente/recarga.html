@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:image" content="img/liv.svg">
-    <link rel="icon" href="img/liv.svg" type="image/x-icon">
+    <link rel="icon" href="/img/liv.svg" type="image/x-icon">
     <title>Liv Transportes - Recarga</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 <script src="https://kit.fontawesome.com/401873f18c.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -17,7 +17,7 @@
             class="d-flex flex-wrap align-items-center py-3 mb-4 border-bottom fixed-top bg-light-subtle justify-content-around">
             <div class="col-md-3 mb-2 mb-md-0">
                 <a href="index.html" class="d-inline-flex link-body-emphasis text-decoration-none">
-                    <img class="bi" width="60" height="60" role="img" src="img/liv.svg">
+                    <img class="bi" width="60" height="60" role="img" src="/img/liv.svg">
                 </a>
             </div>
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -38,7 +38,7 @@
         <hr>
 
         <main class="form-signin w-100 m-auto d-flex justify-content-center">
-       <form>
+       <form id="recargaForm">
               <h2 style="color: #0d6efd;" class="h2 mb-3">Desejo recarregar!</h2>
           
               <div class="form-floating">
@@ -49,7 +49,7 @@
                 <input type="text" class="form-control" id="valor" name="valor" placeholder="0.00" oninput="formatarRecarga(this)" required>
                 <label for="valor">Valor da recarga (R$)</label>
               </div>
-              <button class="btn mt-2 btn-primary w-100 py-2" type="submit" value="efetuar">Efetuar recarga</button>
+              <button class="btn mt-2 btn-primary w-100 py-2" type="submit" value="efetuar" onclick="efetuarRecarga()">Efetuar recarga</button>
             </form>
         </main>
 
@@ -59,7 +59,7 @@
             <div class="row d-flex justify-content-evenly">
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="img/comum.jpg" class="card-img-top" alt="...">
+                        <img src="/img/comum.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">20 Passes <small class="text-body-secondary fw-light">
                             R$50,00</small></h5>
@@ -68,7 +68,7 @@
                       </div>
                 </div>
                 <div class="col"><div class="card" style="width: 18rem;">
-                    <img src="img/estudante.jpg" class="card-img-top" alt="..." height="141px">
+                    <img src="/img/estudante.jpg" class="card-img-top" alt="..." height="141px">
                     <div class="card-body">
                       <h5 class="card-title">30 Passes <small class="text-body-secondary fw-light">
                         R$75,60</small></h5>
@@ -76,7 +76,7 @@
                     </div>
                   </div></div>
                   <div class="col"><div class="card" style="width: 18rem;">
-                    <img src="img/idoso.jpg" class="card-img-top" alt="..." height="141px">
+                    <img src="/img/idoso.jpg" class="card-img-top" alt="..." height="141px">
                     <div class="card-body">
                       <h5 class="card-title">40 Passes <small class="text-body-secondary fw-light">
                         R$100,00</small></h5>
@@ -84,7 +84,7 @@
                     </div>
                   </div></div>
                   <div class="col"><div class="card" style="width: 18rem;">
-                    <img src="img/pcd.jpg" class="card-img-top" alt="..." height="141px">
+                    <img src="/img/pcd.jpg" class="card-img-top" alt="..." height="141px">
                     <div class="card-body">
                       <h5 class="card-title">50 Passes <small class="text-body-secondary fw-light">
                         R$125,00</small></h5>
@@ -146,6 +146,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <script src="js/recarga.js"></script>
+    <script src="/js/cliente/recarga.js"></script>
+    <script src="/js/cliente/recarga/efetuar_recarga.js"></script>
 </body>
 </html>

@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const response = await axios.post(
                     "http://localhost:5000/passageiros/cadastrar",
                     data);
-                console.log(response.data);
-                form.reset();
-                alert(`Passageiro cadastrado com sucesso! id=${response.data.passageiro.id}`)
+                    console.log(response.data);
+                    form.reset();
+                    alert(`Passageiro cadastrado com sucesso! id=${response.data.passageiros.id}`)
                 // window.location.href = `http://localhost:4000/`;
             } catch (error) {
                 console.log(error.message);

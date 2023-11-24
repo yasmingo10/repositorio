@@ -27,9 +27,8 @@ router.post('/cadastrar', async function(req, res, next) {
     const endereco = req.body.endereco;
     const cidade = req.body.cidade;
     const estado = req.body.estado;
-    const cartao = req.body.cartao || null;
 
-    const data = { cpf, nome, nascimento, sexo, email, telefone, endereco, cidade, estado, cartao };
+    const data = { cpf, nome, nascimento, sexo, email, telefone, endereco, cidade, estado };
     const novoPassageiro = await prisma.passageiro.create({ data });
     console.log(req.body);
     

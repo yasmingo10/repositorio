@@ -13,6 +13,7 @@ const formatarCPF = (campoInput) => {
 };
 const validarCPF = () => {
     if (!/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf)) {
+        console.log(ok);
         alert("CPF inválido! Insira o CPF no formato correto: 999.999.999-99");
         return false;
     }
@@ -30,4 +31,35 @@ const formatarRecarga = (campoInput) => {
 //ATUALIZAR O VALOR DE ACORDO COM O PACOTE
 function atualizarValor(novoValor) {
     document.getElementById('valor').value = novoValor;
+}
+
+
+//COMANDA REALIZAR A RECARGA
+async function efetuarRecarga() {
+    var cpf = document.getElementById('cpf').value;
+    var valor = document.getElementById('valor').value;
+
+    if (!validarCPF(cpf)) {
+        alert('CPF inválido. Por favor, verifique e tente novamente.');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:5000/recargas/recarregar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ cpf, valor }),
+        });
+
+        if (response.ok) {
+            alert('Recarga efetuada com sucesso!');
+        } else {
+            alert('Erro ao efetuar recarga. Por favor, tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro ao enviar dados para o servidor:', error);
+        alert('Erro ao efetuar recarga. Por favor, tente novamente.');
+    }
 }

@@ -17,13 +17,12 @@ router.get('/', async function(req, res, next) {
 /* POST */
 router.post("/recarregar", async (req, res, next) => {
   try {
-    const { valor, data, cartao } = req.body;
+    const { valor, data  } = req.body;
 
     const novaRecarga = await prisma.recarga.create({
       data: {
         valor,
-         data,
-         cartao
+         data
       },
     });
 

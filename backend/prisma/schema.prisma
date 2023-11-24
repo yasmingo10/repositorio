@@ -7,27 +7,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model cartao {
-  idcartao                       Int         @id @default(autoincrement())
-  tipo                           String      @db.VarChar(50)
-  saldo                          Decimal     @db.Decimal(6, 2)
-  viagem_id                      Int?
- passageiro_id Int?
-  passageiro    passageiro? @relation(fields: [passageiro_id], references: [id], onUpdate: SetNull, map: "fk_cartao_passageiro1")
-  viagem                         viagem?     @relation(fields: [viagem_id], references: [id], onUpdate: SetNull, map: "fk_cartao_viagem1")
-  recarga_recarga_cartaoTocartao recarga[]   @relation("recarga_cartaoTocartao")
-
-  @@index([viagem_id], map: "fk_cartao_viagem1_idx")
-  @@index([passageiro_id], map: "fk_cartao_passageiro1_idx")
-}
-
 model linha {
   id             Int      @id @default(autoincrement())
-  nome           String   @db.VarChar(30)
   localsaida     String   @db.VarChar(255)
   localdestino   String   @db.VarChar(255)
   horariosaida   DateTime @db.DateTime(0)
   horariochegada DateTime @db.DateTime(0)
+  nome           String   @db.VarChar(30)
   viagem         viagem[]
 }
 
@@ -48,7 +34,6 @@ model onibus {
 }
 
 model passageiro {
-  id            Int     @id @default(autoincrement()) 
   user_id    Int?
   cpf        String   @db.Char(11)
   nome       String   @db.VarChar(100)
@@ -59,20 +44,17 @@ model passageiro {
   endereco   String?  @db.VarChar(45)
   cidade     String   @db.VarChar(45)
   estado     String   @db.Char(2)
-  cartao     cartao[]
+  id         Int      @id @default(autoincrement())
   user       user?    @relation(fields: [user_id], references: [id], onUpdate: SetNull, map: "fk_passageiro_user1")
 
   @@index([user_id], map: "fk_passageiro_user1_idx")
 }
 
 model recarga {
-  idrecarga                     Int      @id @default(autoincrement())
-  valor                         Decimal  @db.Decimal(6, 2)
-  data                          DateTime @db.DateTime(0)
-  cartao                        Int?
-  cartao_recarga_cartaoTocartao cartao?  @relation("recarga_cartaoTocartao", fields: [cartao], references: [idcartao], onUpdate: SetNull, map: "fk_recarga_cartao1")
-
-  @@index([cartao], map: "fk_recarga_cartao1_idx")
+  idrecarga Int      @id @default(autoincrement())
+  
+  valor     Decimal  @db.Decimal(6, 2)
+  data      DateTime @db.DateTime(0)
 }
 
 model user {
@@ -90,7 +72,6 @@ model viagem {
   linha_id     Int?
   motorista_id Int?
   onibus_id    Int?
-  cartao       cartao[]
   linha        linha?     @relation(fields: [linha_id], references: [id], onUpdate: SetNull, map: "fk_viagem_linha1")
   motorista    motorista? @relation(fields: [motorista_id], references: [id], onUpdate: SetNull, map: "fk_viagem_motorista1")
   onibus       onibus?    @relation(fields: [onibus_id], references: [id], onUpdate: SetNull, map: "fk_viagem_onibus1")

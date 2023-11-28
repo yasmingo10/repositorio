@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 const upload = require('../middleware/fileUpload')
 
 /* GET*/
-router.get('/', async function(req, res, next) {
+router.get('/listar', async function(req, res, next) {
   try {
     const motoristas = await prisma.motorista.findMany();
     res.json(motoristas);
@@ -36,7 +36,7 @@ router.post("/cadastrar", upload.single("foto"), async (req, res) => {
 });
 
 /*GET através do ID*/
-router.get('/:id', async (req, res) =>{
+router.get('/exibir/:id', async (req, res) =>{
   try {
     const id = Number(req.params.id);
     const idMotorista = await prisma.motorista.findUnique({
@@ -52,7 +52,7 @@ router.get('/:id', async (req, res) =>{
 });
 
 /*Metodo patch*/
-router.patch('/:id', async (req, res) =>{
+router.patch('/editar/:id', async (req, res) =>{
   try {
   const id = Number(req.params.id);
   const data = req.body;
@@ -71,7 +71,7 @@ catch (error){
 });
 
 /*Delete*/
-router.delete('/:id', async (req, res)=>{
+router.delete('/excluir/:id', async (req, res)=>{
   try {
     const id = Number(req.params.id);
     await prisma.motorista.delete({

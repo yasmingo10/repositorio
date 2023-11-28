@@ -11,6 +11,18 @@ router.get('/motorista/cadastrar', function(req, res, next) {
     res.sendFile("cadastrar.html", { root: 'views/admin/motorista' });
 });
 
+router.get('/motorista/exibir/:id', function(req, res, next) {
+    res.sendFile("exibir.html", { root: 'views/admin/motorista' });
+});
+
+router.get('/motorista/editar/:id', function(req, res, next) {
+    res.sendFile("editar.html", { root: 'views/admin/motorista' });
+});
+
+router.get('/motorista/excluir/:id', function(req, res, next) {
+    res.sendFile("excluir.html", { root: 'views/admin/motorista' });
+});
+
 router.get('/onibus/cadastrar', function(req, res, next) {
     res.sendFile("cadastrar.html", { root: 'views/admin/onibus' });
 });

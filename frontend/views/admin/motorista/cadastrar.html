@@ -230,9 +230,9 @@
                 tr.appendChild(admissaoTd);
 
                 const acoesTd = document.createElement('td');
-                const exibirLink = `<a href="admin/motorista/exibir/${motorista.id}">Exibir</a>`;
-                const editarLink = `<a href="admin/motorista/editar/${motorista.id}">Editar</a>`;
-                const deletarLink = `<a href="admin/motorista/excluir/${motorista.id}">Excluir</a>`;
+                const exibirLink = `<a class="btn btn-primary mr-2" href="admin/motorista/exibir/${motorista.id}">Exibir</a>`;
+                const editarLink = `<a class="btn btn-secondary mr-2"  href="admin/motorista/editar/${motorista.id}">Editar</a>`;
+                const deletarLink = `<a class="btn btn-danger mr-2" href="admin/motorista/excluir/${motorista.id}">Excluir</a>`;
                 acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
                 tr.appendChild(acoesTd);
 

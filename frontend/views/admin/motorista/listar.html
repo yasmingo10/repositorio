@@ -106,25 +106,27 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="page-header">
-            <h3 class="page-title"> Dados do Motorista </h3>
-            <nav aria-label="breadcrumb">
-
-            </nav>
-          </div>
-          <div class="row">
-            <div class="col-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Informações</h4>
-                  <main class="container">                
-                    <div id="informacoesMotorista"></div>
-                        <form id="formExcluir">
-                            <input type="hidden" id="id" name="id">
-                            <input class="btn btn-danger mr-2" type="submit" value="Desejo excluir este registro">
-                        </form>
-                    </main>
-                </div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Motoristas Ativos</h4>
+              </p>
+              <div class="table-responsive">
+                <table class="table table-striped" id="motoristas">
+                  <thead>
+                    <tr>
+                      <th> ID </th>
+                      <th> Nome </th>
+                      <th> Nascimento </th>
+                      <th> Gênero </th>
+                      <th> Foto </th>
+                      <th> Data de Admissao </th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -138,66 +140,64 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <script src="/js/admin/motorista/motorista_create.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const tbody = document.querySelector('#motoristas tbody');
 
-    
-    
-    <script>
-        async function carregarDetalhesMotorista() {
-            try {
-                const id =  window.location.pathname.split('/').pop();
-                const response = await axios.get(`http://localhost:5000/motoristas/exibir/${id}`);
-                const motorista = response.data;
-    
-                const informacoesMotorista = document.querySelector("#informacoesMotorista");
-    
-                const codigoElem = document.createElement('div');
-                codigoElem.innerHTML = `<div><strong>Código:</strong> ${motorista.id}</div>`;
-                informacoesMotorista.append(codigoElem);
-    
-                const nomeElem = document.createElement('div');
-                nomeElem.innerHTML = `<div><strong>Nome:</strong> ${motorista.nome}</div>`;
-                informacoesMotorista.append(nomeElem);
-    
-                const fotoElem = document.createElement('div');
+            const response = await axios.get('http://localhost:5000/motoristas/listar');
+            response.data.forEach(motorista => {
+                const tr = document.createElement('tr');
+
+                const codigoTd = document.createElement('td');
+                codigoTd.textContent = motorista.id;
+                tr.appendChild(codigoTd);
+
+                const nomeTd = document.createElement('td');
+                nomeTd.textContent = motorista.nome;
+                tr.appendChild(nomeTd);
+
+                const nascimentoTd = document.createElement('td');
+                nascimentoTd.textContent = motorista.nascimento;
+                tr.appendChild(nascimentoTd);
+
+                const sexoTd = document.createElement('td');
+                sexoTd.textContent = motorista.sexo;
+                tr.appendChild(sexoTd);
+
+                const fotoTd = document.createElement('td');
                 if (motorista.foto) {
-                    fotoElem.innerHTML = `
-                <div>
-                  <strong>Foto:</strong> 
-                  <img src="http://localhost:5000/${motorista.foto}" alt="${motorista.nome}" width="50">
-                </div>`;
+                    fotoTd.innerHTML = `<img src="http://localhost:5000/${motorista.foto}" alt="${motorista.nome}" width="50">`;
                 } else {
-                    fotoElem.innerHTML = `<div><strong>Foto:</strong> Não possui.</div>`;
+                    fotoTd.innerHTML = "Não possui.";
                 }
-                informacoesMotorista.append(fotoElem);
-            } catch (error) {
-                console.log(error);
-    
-                if (error?.response?.status === 404) {
-                    alert("Motorista não encontrado.");
-                    // window.location.href = "/motoristas/listar";
-                } else {
-                    alert(error.response.data.mensagem);
-                }
-            }
+                tr.appendChild(fotoTd);
+
+                const admissaoTd = document.createElement('td');
+                admissaoTd.textContent = motorista.admissao;
+                tr.appendChild(admissaoTd);
+
+                const acoesTd = document.createElement('td');
+                const exibirLink = `<a class="btn btn-primary mr-2" href="admin/motorista/exibir/${motorista.id}">Exibir</a>`;
+                const editarLink = `<a class="btn btn-secondary mr-2"  href="admin/motorista/editar/${motorista.id}">Editar</a>`;
+                const deletarLink = `<a class="btn btn-danger mr-2" href="admin/motorista/excluir/${motorista.id}">Excluir</a>`;
+                acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
+                tr.appendChild(acoesTd);
+
+                tbody.appendChild(tr);
+            });
+
+        } catch (error) {
+            console.log(error);
+            alert(error.response.data.mensagem);
         }
+
+    });
+</script>
     
-        async function excluir(event) {
-            event.preventDefault();
-    
-            const confirmacao = confirm("Tem certeza que deseja deletar este motorista?");
-            if (confirmacao) {
-                try {
-                    const id = window.location.pathname.split('/').pop();
-                    await axios.delete(`http://localhost:5000/motoristas/excluir/${id}`);
-                    alert("Motorista deletado com sucesso.");
-                    window.location.href = "admin/motorista/cadastrar";
-                } catch (error) {
-                    console.log(error);
-                    alert("Erro ao deletar o motorista.");
-                }
-            }
-        }
-    
-        carregarDetalhesMotorista();
-        document.querySelector("form#formExcluir").addEventListener("submit", excluir);
-    </script>
+    <!-- endinject -->
+
+</body>
+
+</html>

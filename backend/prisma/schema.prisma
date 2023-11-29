@@ -13,7 +13,6 @@ model linha {
   localdestino   String   @db.VarChar(255)
   horariosaida   DateTime @db.DateTime(0)
   horariochegada DateTime @db.DateTime(0)
-  nome           String   @db.VarChar(30)
   viagem         viagem[]
 }
 
@@ -34,6 +33,7 @@ model onibus {
 }
 
 model passageiro {
+  id         BigInt   @id @default(autoincrement())
   user_id    Int?
   cpf        String   @db.Char(11)
   nome       String   @db.VarChar(100)
@@ -44,7 +44,6 @@ model passageiro {
   endereco   String?  @db.VarChar(45)
   cidade     String   @db.VarChar(45)
   estado     String   @db.Char(2)
-  id         Int      @id @default(autoincrement())
   user       user?    @relation(fields: [user_id], references: [id], onUpdate: SetNull, map: "fk_passageiro_user1")
 
   @@index([user_id], map: "fk_passageiro_user1_idx")
@@ -52,9 +51,8 @@ model passageiro {
 
 model recarga {
   idrecarga Int      @id @default(autoincrement())
-  
   valor     Decimal  @db.Decimal(6, 2)
-  data      DateTime @db.DateTime(0)
+  data      DateTime @db.Date
 }
 
 model user {

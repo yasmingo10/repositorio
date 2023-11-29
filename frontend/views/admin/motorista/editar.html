@@ -201,9 +201,9 @@
                         event.preventDefault();
 
                         if (form.checkValidity()) {
-                            console.log('ok');
                             try {
                                 const formData = new FormData(event.currentTarget);
+                                console.log(ok);
                                 await axios.patch(`http://localhost:5000/motoristas/editar/${id}`, formData, {
                                     headers: {
                                         'Content-Type': 'multipart/form-data'

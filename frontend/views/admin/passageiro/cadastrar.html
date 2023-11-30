@@ -1,26 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Corona Admin</title>
-    <!-- plugins:css -->
     <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End Plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
-    <!-- End layout styles -->
     <link rel="shortcut icon" href="/assets/images/favicon.png" />
   </head>
   <body>
     <div class="container-scroller">
-      <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
           <a class="sidebar-brand brand-logo" href="/index.html"><img src="/assets/images/logo.svg" alt="logo" /></a>
@@ -70,9 +60,7 @@
           </li>
         </ul>
       </nav>
-      <!-- partial -->
       <div class="container-fluid page-body-wrapper">
-        <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
             <a class="navbar-brand brand-logo-mini" href="/index.html"><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
@@ -96,7 +84,6 @@
             </button>
           </div>
         </nav>
-        <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
@@ -152,9 +139,6 @@
                         <input type="text" class="form-control" id="estado" name="estado" placeholder="Insira a UF">
                       </div>
                       <button type="submit" class="btn btn-primary mr-2">Cadastrar</button>
-                      <button class="btn btn-primary mr-2">Editar</button>
-                      <button class="btn btn-danger mr-2">Excluir</button>
-                      <button class="btn btn-dark mr-2">Cancelar</button>
                     </form>
                   </div>
                 </div>
@@ -165,89 +149,102 @@
               <h4 class="card-title">Passageiros Ativos</h4>
               </p>
               <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" id="passageiros">
                   <thead>
                     <tr>
-                      <th> Foto </th>
+                      <th> ID </th>
                       <th> Nome </th>
-                      <th> Identificador </th>
-                      <th> Data de Entrada </th>
+                      <th> CPF </th>
+                      <th> Nascimento </th>
+                      <th> Telefone </th>
+                      <th> Email </th>
+                      <th> Gênero </th>
+                      <th> Endereço </th>
+                      <th> Cidade </th>
+                      <th> Estado </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="py-1">
-                        <img src="/assets/images/faces-clipart/pic-1.png" alt="image">
-                      </td>
-                      <td> Herman Beck </td>
-                      <td> 77 </td>
-                      <td> May 15, 2015 </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        <img src="/assets/images/faces-clipart/pic-2.png" alt="image">
-                      </td>
-                      <td> Messsy Adam </td>
-                      <td> 245 </td>
-                      <td> July 1, 2015 </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        <img src="/assets/images/faces-clipart/pic-3.png" alt="image">
-                      </td>
-                      <td> John Richards </td>
-                      <td> 138 </td>
-                      <td> Apr 12, 2015 </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        <img src="/assets/images/faces-clipart/pic-4.png" alt="image">
-                      </td>
-                      <td> Peter Meggik </td>
-                      <td> 79 </td>
-                      <td> May 15, 2015 </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        <img src="/assets/images/faces-clipart/pic-1.png" alt="image">
-                      </td>
-                      <td> Edward </td>
-                      <td> 160 </td>
-                      <td> May 03, 2015 </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        <img src="/assets/images/faces-clipart/pic-2.png" alt="image">
-                      </td>
-                      <td> John Doe </td>
-                      <td>  123 </td>
-                      <td> April 05, 2015 </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        <img src="/assets/images/faces-clipart/pic-3.png" alt="image">
-                      </td>
-                      <td> Henry Tom </td>
-                      <td>150</td>
-                      <td> June 16, 2015 </td>
-                    </tr>
+                    
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
               <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © empresa.com 2023</span>
             </div>
           </footer>
-          <!-- partial -->
         </div>
-        <!-- main-panel ends -->
       </div>
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <script src="/js/admin/passageiros/passageiro_create.js"></script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const tbody = document.querySelector('#passageiros tbody');
+    
+                const response = await axios.get('http://localhost:5000/passageiros/listar'); 
+                response.data.forEach(passageiro => {
+                    const tr = document.createElement('tr');
+
+                    const codigoTd = document.createElement('td');
+                codigoTd.textContent = passageiro.id;
+                tr.appendChild(codigoTd);
+    
+                    const nomeTd = document.createElement('td');
+                    nomeTd.textContent = passageiro.nome;
+                    tr.appendChild(nomeTd);
+    
+                    const cpfTd = document.createElement('td');
+                    cpfTd.textContent = passageiro.cpf;
+                    tr.appendChild(cpfTd);
+    
+                    const nascimentoTd = document.createElement('td');
+                    nascimentoTd.textContent = passageiro.nascimento;
+                    tr.appendChild(nascimentoTd);
+    
+                    const telefoneTd = document.createElement('td');
+                    telefoneTd.textContent = passageiro.telefone;
+                    tr.appendChild(telefoneTd);
+    
+                    const emailTd = document.createElement('td');
+                    emailTd.textContent = passageiro.email;
+                    tr.appendChild(emailTd);
+
+                    const sexoTd = document.createElement('td');
+                    sexoTd.textContent = passageiro.sexo;
+                    tr.appendChild(sexoTd);
+
+                    const enderecoTd = document.createElement('td');
+                    enderecoTd.textContent = passageiro.endereco;
+                    tr.appendChild(enderecoTd);
+
+                    const cidadeTd = document.createElement('td');
+                    cidadeTd.textContent = passageiro.cidade;
+                    tr.appendChild(cidadeTd);
+
+                    const estadoTd = document.createElement('td');
+                    estadoTd.textContent = passageiro.estado;
+                    tr.appendChild(estadoTd);
+
+                    const acoesTd = document.createElement('td');
+                const exibirLink = `<a class="btn btn-primary mr-2" href="/admin/passageiro/exibir/${passageiro.id}">Exibir</a>`;
+                const editarLink = `<a class="btn btn-secondary mr-2"  href="/admin/passageiro/editar/${passageiro.id}">Editar</a>`;
+                const deletarLink = `<a class="btn btn-danger mr-2" href="/admin/passageiro/excluir/${passageiro.id}">Excluir</a>`;
+                acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
+                tr.appendChild(acoesTd);
+
+                tbody.appendChild(tr);
+                });
+    
+            } catch (error) {
+                console.log(error);
+                alert(error.response.data.mensagem);
+            }
+        });
+    </script>
   </body>
 </html>

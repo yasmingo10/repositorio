@@ -4,7 +4,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 /* GET*/
-router.get('/', async function(req, res, next) {
+router.get('/listar', async function(req, res, next) {
   try {
     const linhas = await prisma.linha.findMany();
     res.json(linhas);
@@ -41,7 +41,7 @@ router.post("/cadastrar", async (req, res, next) => {
 });
 
 /*GET através do ID*/
-router.get('/:id', async (req, res) =>{
+router.get('/exibir/:id', async (req, res) =>{
   try {
     const id = Number(req.params.id);
     const idLinha = await prisma.linha.findUnique({
@@ -57,7 +57,7 @@ router.get('/:id', async (req, res) =>{
 });
 
 /*Metodo patch*/
-router.patch('/:id', async (req, res) =>{
+router.patch('/editar/:id', async (req, res) =>{
   try {
   const id = Number(req.params.id);
   const data = req.body;
@@ -76,7 +76,7 @@ catch (error){
 });
 
 /*Delete*/
-router.delete('/:id', async (req, res)=>{
+router.delete('/excluir/:id', async (req, res)=>{
   try {
     const id = Number(req.params.id);
     await prisma.linha.delete({

@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Corona Admin</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/m
+    di/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End Plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
-    <!-- End layout styles -->
     <link rel="shortcut icon" href="/assets/images/favicon.png" />
   </head>
   <body>
     <div class="container-scroller">
-      <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
           <a class="sidebar-brand brand-logo" href="#"><img src="/assets/images/logo.svg" alt="logo" /></a>
@@ -70,9 +61,7 @@
           </li>
         </ul>
       </nav>
-      <!-- partial -->
       <div class="container-fluid page-body-wrapper">
-        <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
             <a class="navbar-brand brand-logo-mini" href="/index.html"><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
@@ -97,7 +86,6 @@
             </button>
           </div>
         </nav>
-        <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
@@ -112,10 +100,6 @@
                   <div class="card-body">
                     <h4 class="card-title">Formulario de Cadastro</h4>
                     <form id="formOnibus" class="forms-sample">
-                      <div class="form-group">
-                        <label for="linha">Numero da Linha</label>
-                        <input type="number" class="form-control" id="linha" name="linha" placeholder="Numero da Linha">
-                      </div>
                       <div class="form-group">
                         <label for="placa">Placa do Automovel</label>
                         <input type="text" class="form-control" id="placa" name="placa" placeholder="Placa do Automovel">
@@ -135,70 +119,65 @@
               <h4 class="card-title">Onibus Ativos</h4>
               </p>
               <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" id="onibus">
                   <thead>
                     <tr>
-                      <th> Numero da Linha </th>
+                      <th> ID </th>
                       <th> Placa do Automovel </th>
-                      <th> Identificador </th>
+                      <th> Ações </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td> 77 </td>
-                      <td> FWZ-3120 </td>
-                      <td> 09759936033 </td>
-                    </tr>
-                    <tr>
-                      <td> 245 </td>
-                      <td> DNP-6310 </td>
-                      <td> 89705552065 </td>
-                    </tr>
-                    <tr>
-                      <td> 138 </td>
-                      <td> CRV-1339 </td>
-                      <td> 62935291946 </td>
-                    </tr>
-                    <tr>
-                      <td> 79 </td>
-                      <td> BLX-2971 </td>
-                      <td> 62935291946 </td>
-                    </tr>
-                    <tr>
-                      <td> 160 </td>
-                      <td> BUP-0255 </td>
-                      <td> 85977372170 </td>
-                    </tr>
-                    <tr>
-                      <td>  123 </td>
-                      <td> FEQ-4081 </td>
-                      <td>  73530115560 </td>
-                    </tr>
-                    <tr>
-                      <td> 150 </td>
-                      <td> BFK-7081 </td>
-                      <td> 84829242717 </td>
-                    </tr>
+                    
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
               <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © empresa.com 2023</span>
             </div>
           </footer>
-          <!-- partial -->
         </div>
-        <!-- main-panel ends -->
       </div>
-      <!-- page-body-wrapper ends -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/admin/onibus/onibus_create.js"></script>
-    <!-- endinject -->
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+          try {
+              const tbody = document.querySelector('#onibus tbody');
+
+              const response = await axios.get('http://localhost:5000/onibus/listar');
+              response.data.forEach(onibus => {
+                  const tr = document.createElement('tr');
+
+                  const codigoTd = document.createElement('td');
+                  codigoTd.textContent = onibus.id;
+                  tr.appendChild(codigoTd);
+
+                  const placaTd = document.createElement('td');
+                  placaTd.textContent = onibus.placa;
+                  tr.appendChild(placaTd);
+
+                  const acoesTd = document.createElement('td');
+                  const exibirLink = `<a class="btn btn-primary mr-2" href="/admin/onibus/exibir/${onibus.id}">Exibir</a>`;
+                  const editarLink = `<a class="btn btn-secondary mr-2"  href="/admin/onibus/editar/${onibus.id}">Editar</a>`;
+                  const deletarLink = `<a class="btn btn-danger mr-2" href="/admin/onibus/excluir/${onibus.id}">Excluir</a>`;
+                  acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
+                  tr.appendChild(acoesTd);
+
+                  tbody.appendChild(tr);
+              });
+
+          } catch (error) {
+              console.log(error);
+              alert(error.response.data.mensagem);
+          }
+      });
+
+  </script>
+
   </body>
 </html>

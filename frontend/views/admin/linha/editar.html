@@ -95,7 +95,7 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Registro de uma nova linha</h4>
+                    <h4 class="card-title">Editar a Linha</h4>
                     <form id="formLinhas" class="forms-sample">
                       <div class="form-group">
                         <label for="nome">Nome da Linha</label>
@@ -117,33 +117,11 @@
                         <label for="horariochegada">Horario de chegada</label>
                         <input type="time" class="form-control" id="horariochegada" name="horariochegada" placeholder="Horario de chegada">
                       </div>
-                      <button type="submit" class="btn btn-primary mr-2">Cadastrar</button>
+                      <button type="submit" class="btn btn-primary mr-2">Editar</button>
                     </form>
                   </div>
                 </div>
               </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Linhas ativas</h4>
-              </p>
-              <div class="table-responsive">
-                <table class="table table-striped" id="linha">
-                  <thead>
-                    <tr>
-                      <th> ID </th>
-                      <th> Nome da Linha </th>
-                      <th> Local de Saida </th>
-                      <th> Local de Destino </th>
-                      <th> Horário de Saida </th>
-                      <th> Horário de Chegada </th>
-                    </tr>
-                  </thead>
-                  <tbody>        
-                  </tbody>
-                </table>
-              </div>
-            </div>
           </div>
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
@@ -153,60 +131,8 @@
         </div>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/admin/linhas/linhas_create.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', async () => {
-                try {
-                    const tbody = document.querySelector('#linha tbody');
-
-                    const response = await axios.get('http://localhost:5000/linhas/listar');
-                    response.data.forEach(linha => {
-                        const tr = document.createElement('tr');
-
-                        const codigoTd = document.createElement('td');
-                        codigoTd.textContent = linha.id;
-                        tr.appendChild(codigoTd);
-
-                        const nomeTd = document.createElement('td');
-                        nomeTd.textContent = linha.nome;
-                        tr.appendChild(nomeTd);
-
-                        const localsaidaTd = document.createElement('td');
-                        localsaidaTd.textContent = linha.localsaida;
-                        tr.appendChild(localsaidaTd);
-
-                        const localdestinoTd = document.createElement('td');
-                        localdestinoTd.textContent = linha.localdestino;
-                        tr.appendChild(localdestinoTd);
-
-                        const horariosaidaTd = document.createElement('td');
-                        horariosaidaTd.textContent = linha.horariosaida;
-                        tr.appendChild(horariosaidaTd);
-
-                        const horariochegadaTd= document.createElement('td');
-                        horariochegadaTd.textContent = linha.horariochegada;
-                        tr.appendChild(horariochegadaTd);
-
-                        const acoesTd = document.createElement('td');
-                        const exibirLink = `<a class="btn btn-primary mr-2" href="/admin/linha/exibir/${linha.id}">Exibir</a>`;
-                        const editarLink = `<a class="btn btn-secondary mr-2"  href="/admin/linha/editar/${linha.id}">Editar</a>`;
-                        const deletarLink = `<a class="btn btn-danger mr-2" href="/admin/linha/excluir/${linha.id}">Excluir</a>`;
-                        acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
-                        tr.appendChild(acoesTd);
-
-                        tbody.appendChild(tr);
-                    });
-
-                } catch (error) {
-                    console.log(error);
-                    alert(error.response.data.mensagem);
-                }
-            });
-
-        </script>
-
 
     
   </body>

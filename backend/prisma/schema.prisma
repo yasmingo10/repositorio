@@ -13,6 +13,7 @@ model linha {
   localdestino   String   @db.VarChar(255)
   horariosaida   DateTime @db.DateTime(0)
   horariochegada DateTime @db.DateTime(0)
+  nome           String   @db.VarChar(80)
   viagem         viagem[]
 }
 
@@ -33,9 +34,9 @@ model onibus {
 }
 
 model passageiro {
-  id         BigInt   @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   user_id    Int?
-  cpf        String   @db.Char(11)
+  cpf        String   @unique @db.Char(11)
   nome       String   @db.VarChar(100)
   nascimento DateTime @db.Date
   sexo       String?  @db.Char(1)

@@ -4,8 +4,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // Obtém todos os passageiros
-router.get('/', async function(req, res, next) {
-  console.log("ok");
+router.get('/listar', async function(req, res, next) {
   try {
     const passageiros = await prisma.passageiro.findMany();
     res.json(passageiros);
@@ -41,7 +40,7 @@ router.post('/cadastrar', async function(req, res, next) {
 });
 
 // Obtém um passageiro pelo ID
-router.get('/:id', async function(req, res, next) {
+router.get('/exibir/:id', async function(req, res, next) {
   try {
     const id = Number(req.params.id);
     const passageiro = await prisma.passageiro.findUnique({
@@ -57,7 +56,7 @@ router.get('/:id', async function(req, res, next) {
 });
 
 // Atualiza um passageiro pelo ID
-router.patch('/:id', async function(req, res, next) {
+router.patch('/editar/:id', async function(req, res, next) {
   try {
     const id = Number(req.params.id);
     const data = req.body;
@@ -75,7 +74,7 @@ router.patch('/:id', async function(req, res, next) {
 });
 
 // Deleta um passageiro pelo ID
-router.delete('/:id', async function(req, res, next) {
+router.delete('/excluir/:id', async function(req, res, next) {
   try {
     const id = Number(req.params.id);
     await prisma.passageiro.delete({

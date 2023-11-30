@@ -52,7 +52,7 @@ router.get('/exibir/:id', async (req, res) =>{
 });
 
 /*Metodo patch*/
-router.patch('/editar/:id', async (req, res) =>{
+router.put('/editar/:id', async (req, res) =>{
   try {
   const id = Number(req.params.id);
   const data = req.body;
@@ -89,6 +89,16 @@ router.delete('/excluir/:id', async (req, res)=>{
 /*Para todas as rotas não existentes*/
 router.all('*', (req, res) =>{
   res.status(501).end();
+});
+
+router.get('/motoristas/quantidadeTotal', async (req, res) => {
+  try {
+      const quantidadeTotal = await prisma.motorista.count();
+      res.json(quantidadeTotal);
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: "Erro ao obter a quantidade total de motoristas cadastrados." });
+  }
 });
 
 module.exports = router;

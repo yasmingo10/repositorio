@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Corona Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End Plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="/assets/images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <a class="sidebar-brand brand-logo" href="#"><img src="/assets/images/logo.svg"
+            alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="#"><img src="/assets/images/logo-mini.svg"
+            alt="logo" /></a>
+      </div>
+      <ul class="nav">
+        <li class="nav-item profile">
+          <div class="profile-desc">
+            <div class="profile-pic">
+              <div class="count-indicator">
+                <img class="img-xs rounded-circle " src="/assets/images/faces/face15.jpg" alt="">
+              </div>
+              <div class="profile-name">
+                <h5 class="mb-0 font-weight-normal">Nome</h5>
+                <span>Administrador</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-category">
+          <span class="nav-link">Navegação</span>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="#">
+            <span class="menu-icon">
+              <i class="mdi mdi-speedometer"></i>
+            </span>
+            <span class="menu-title">Gerenciamento</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <span class="menu-icon">
+              <i class="mdi mdi-laptop"></i>
+            </span>
+            <span class="menu-title">Admin de Usuarios</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="pages/Motorista.html">Motorista</a></li>
+              <li class="nav-item"> <a class="nav-link" href="pages/Passe.html">Passe</a></li>
+              <li class="nav-item"> <a class="nav-link" href="pages/Linhas.html">Linhas</a></li>
+              <li class="nav-item"> <a class="nav-link" href="pages/Onibus.html">Onibus</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav class="navbar p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo-mini" href="#"><img src="/assets/images/logo-mini.svg"
+              alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <ul class="navbar-nav w-100">
+            <li class="nav-item w-100">
+              <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                <input type="text" class="form-control" placeholder="Pesquisa">
+              </form>
+            </li>
+          </ul>
+          <ul class="navbar-nav navbar-nav-right">
+            </li>
+
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+            data-toggle="offcanvas">
+            <span class="mdi mdi-format-line-spacing"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title"> Dados da Linha </h3>
+            <nav aria-label="breadcrumb">
+
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Informações</h4>
+                  <main class="container">                
+                    <div id="informacoesLinha"></div>
+                    </main>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © empresa.com
+                2023</span>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+          try {
+              const id = window.location.pathname.split('/').pop();
+  
+              const response = await axios.get(`http://localhost:5000/linhas/exibir/${id}`);
+              const linha = response.data; // Mudança aqui, de linhas para linha
+  
+              const informacoesLinha = document.querySelector("#informacoesLinha");
+  
+              const codigoElem = document.createElement('div');
+              codigoElem.innerHTML = `<div><strong>Código:</strong> ${linha.id}</div>`;
+              informacoesLinha.append(codigoElem);
+  
+              const nomeElem = document.createElement('div');
+              nomeElem.innerHTML = `<div><strong>Nome:</strong> ${linha.nome}</div>`;
+              informacoesLinha.append(nomeElem);
+  
+              const localdestinoElem = document.createElement('div');
+              localdestinoElem.innerHTML = `<div><strong>Local de Destino:</strong> ${linha.localdestino}</div>`;
+              informacoesLinha.append(localdestinoElem);
+  
+              const localsaidaElem = document.createElement('div');
+              localsaidaElem.innerHTML = `<div><strong>Local de Saída:</strong> ${linha.localsaida}</div>`;
+              informacoesLinha.append(localsaidaElem);
+  
+              const horariosaidaElem = document.createElement('div');
+              horariosaidaElem.innerHTML = `<div><strong>Horário de Saída:</strong> ${linha.horariosaida}</div>`;
+              informacoesLinha.append(horariosaidaElem);
+  
+              const horariochegadaElem = document.createElement('div');
+              horariochegadaElem.innerHTML = `<div><strong>Horário de Chegada:</strong> ${linha.horariochegada}</div>`;
+              informacoesLinha.append(horariochegadaElem);
+  
+          } catch (error) {
+              console.log(error);
+  
+              if (error?.response?.status === 404) {
+                  alert("Linha não encontrada.");
+                  window.location.href = "/cadastrar";
+              } else {
+                  alert(error.response.data.mensagem);
+              }
+          }
+      });
+  </script>
+  
+    
+
+</body>
+
+</html>

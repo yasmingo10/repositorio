@@ -2,18 +2,27 @@
 <html lang="en">
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Corona Admin</title>
+    <!-- plugins:css -->
     <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- End layout styles -->
     <link rel="shortcut icon" href="/assets/images/favicon.png" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
     <div class="container-scroller">
+        <!-- partial:../../partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
                 <a class="sidebar-brand brand-logo" href="#"><img src="/assets/images/logo.svg" alt="logo" /></a>
@@ -65,7 +74,9 @@
                 </li>
             </ul>
         </nav>
+        <!-- partial -->
         <div class="container-fluid page-body-wrapper">
+            <!-- partial:../../partials/_navbar.html -->
             <nav class="navbar p-0 fixed-top d-flex flex-row">
                 <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
                     <a class="navbar-brand brand-logo-mini" href="#"><img src="/assets/images/logo-mini.svg"
@@ -93,62 +104,26 @@
                     </button>
                 </div>
             </nav>
+            <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="page-header">
-                        <h3 class="page-title"> Dados do Motorista </h3>
-                        <nav aria-label="breadcrumb">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Motoristas Ativos</h4>
+                            </p>
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="onibus">
+                                    <thead>
+                                        <tr>
+                                            <th> ID </th>
+                                            <th> Placa do Veiculo </th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                        </nav>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Informações</h4>
-                                    <main class="container">
-
-                                        <form id="form" enctype="multipart/form-data">
-                                            <div class="form-group">
-                                                <label for="nome">Nome</label>
-                                                <input type="text" class="form-control" id="nome" name="nome"
-                                                    placeholder="Nome">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nascimento">Nascimento</label>
-                                                <input type="date" class="form-control" id="nascimento"
-                                                    name="nascimento" placeholder="Data de Nascimento">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="sexo">Gênero</label>
-                                                <select class="form-control" id="sexo" name="sexo">
-                                                    <option value="m">Masculino</option>
-                                                    <option value="f">Feminino</option>
-                                                    <option value="null">Prefiro não informar</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Foto</label>
-                                                <div class="input-group col-xs-12">
-                                                    <input id="foto" type="file" class="form-control file-upload-info"
-                                                        placeholder="Upload Imagem" name="foto">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="admissao">Data de Admissão</label>
-                                                <input type="date" class="form-control" id="admissao" name="admissao"
-                                                    placeholder="Data de Admissão">
-                                            </div>
-
-                                            <div class="col-12">
-                                                <input class="btn btn-primary w-100" type="submit"
-                                                    value="Salvar Alterações" />
-                                            </div>
-                                        </form>
-                                    </main>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -162,54 +137,43 @@
                 </div>
             </div>
         </div>
-        <!-- ... Seu código HTML ... -->
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      try {
-        const id = window.location.pathname.split('/').pop();
-        const response = await axios.get(`http://localhost:5000/motoristas/exibir/${id}`);
-        const motorista = response.data;
-  
-        const form = document.querySelector('#form');
-        const nomeInput = document.querySelector('#nome');
-        
-        nomeInput.value = motorista.nome;
-  
-        form.addEventListener('submit', async (event) => {
-          event.preventDefault();
-  
-          if (form.checkValidity()) {
-            try {
-              const formData = new FormData(form);
-              await axios.put(`http://localhost:5000/motoristas/editar/${id}`, formData, {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                try {
+                    const tbody = document.querySelector('#onibus tbody');
+
+                    const response = await axios.get('http://localhost:5000/onibus/listar');
+                    response.data.forEach(onibus => {
+                        const tr = document.createElement('tr');
+
+                        const codigoTd = document.createElement('td');
+                        codigoTd.textContent = onibus.id;
+                        tr.appendChild(codigoTd);
+
+                        const placaTd = document.createElement('td');
+                        placaTd.textContent = onibus.placa;
+                        tr.appendChild(placaTd);
+
+                        const acoesTd = document.createElement('td');
+                        const exibirLink = `<a class="btn btn-primary mr-2" href="/admin/onibus/exibir/${onibus.id}">Exibir</a>`;
+                        const editarLink = `<a class="btn btn-secondary mr-2"  href="/admin/onibus/editar/${onibus.id}">Editar</a>`;
+                        const deletarLink = `<a class="btn btn-danger mr-2" href="/admin/onibus/excluir/${onibus.id}">Excluir</a>`;
+                        acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
+                        tr.appendChild(acoesTd);
+
+                        tbody.appendChild(tr);
+                    });
+
+                } catch (error) {
+                    console.log(error);
+                    alert(error.response.data.mensagem);
                 }
-              });
-  
-              alert("Motorista editado com sucesso.");
-            //   window.location.href = `/motoristas/exibir/${id}`;
-            } catch (error) {
-              console.log(error);
-              alert(error.response.data.mensagem);
-            }
-          }
-  
-          form.classList.add('was-validated');
-        }, false);
-      } catch (error) {
-        console.log(error);
-  
-        if (error?.response?.status === 404) {
-          alert("Motorista não encontrado.");
-        //   window.location.href = "/motoristas/listar";
-        } else {
-          alert(error.response.data.mensagem);
-        }
-      }
-    });
-  </script>
+            });
+
+        </script>
+
+
 </body>
+
 </html>

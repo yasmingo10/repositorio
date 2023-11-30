@@ -17,20 +17,61 @@ router.get('/listar', async function(req, res, next) {
 // Cria um novo passageiro
 router.post('/cadastrar', async function(req, res, next) {
   try {
-    const cpf = req.body.cpf;
-    const nome = req.body.nome;
-    const nascimento = new Date(req.body.nascimento).toISOString();
-    const sexo = req.body.sexo;
-    const email = req.body.email;
-    const telefone = req.body.telefone;
-    const endereco = req.body.endereco;
-    const cidade = req.body.cidade;
-    const estado = req.body.estado;
+    const {
+      cpf,
+      nome,
+      nascimento,
+      sexo,
+      email,
+      telefone,
+      endereco,
+      cidade,
+      estado,
+      saldo,
+      recarga: recargaData // Renomeie para evitar conflitos de nomes
+    } = req.body;
 
-    const data = { cpf, nome, nascimento, sexo, email, telefone, endereco, cidade, estado };
-    const novoPassageiro = await prisma.passageiro.create({ data });
-    console.log(req.body);
-    
+    // Crie o passageiro
+    const novoPassageiro = await prisma.passageiro.create({
+      data: {
+        cpf,
+        nome,
+        nascimento,
+        sexo,
+        email,
+        telefone,
+        endereco,
+        cidade,
+        estado,
+        saldo
+      }
+    });
+
+    // Se houver dados de recarga, crie a recarga e associe ao passageiro
+    if (recargaData) {
+      const novaRecarga = await prisma.recarga.create({
+        data: {
+          // Inclua os campos relevantes da recarga aqui
+          // Exemplo: valor, data, etc.
+          // recarga: recargaData
+        }
+      });
+
+      // Associe a recarga recém-criada ao passageiro
+      await prisma.passageiro.update({
+        where: {
+          id: novoPassageiro.id
+        },
+        data: {
+          recarga: {
+            connect: {
+              id: novaRecarga.id
+            }
+          }
+        }
+      });
+    }
+
     res.json(novoPassageiro);
   } catch (error) {
     console.error(error);
@@ -38,6 +79,7 @@ router.post('/cadastrar', async function(req, res, next) {
     next(error);
   }
 });
+
 
 // Obtém um passageiro pelo ID
 router.get('/exibir/:id', async function(req, res, next) {

@@ -34,35 +34,28 @@ model onibus {
 }
 
 model passageiro {
-  id         Int      @id @default(autoincrement())
-  user_id    Int?
-  cpf        String   @unique @db.Char(11)
-  nome       String   @db.VarChar(100)
-  nascimento DateTime @db.Date
-  sexo       String?  @db.Char(1)
-  email      String   @db.VarChar(250)
-  telefone   String   @db.VarChar(20)
-  endereco   String?  @db.VarChar(45)
-  cidade     String   @db.VarChar(45)
-  estado     String   @db.Char(2)
-  user       user?    @relation(fields: [user_id], references: [id], onUpdate: SetNull, map: "fk_passageiro_user1")
-
-  @@index([user_id], map: "fk_passageiro_user1_idx")
+  id         Int       @id @default(autoincrement())
+  cpf        String    @unique @db.Char(11)
+  nome       String    @db.VarChar(100)
+  nascimento DateTime  @db.Date
+  sexo       String?   @db.Char(1)
+  email      String    @db.VarChar(250)
+  telefone   String    @db.VarChar(20)
+  endereco   String?   @db.VarChar(45)
+  cidade     String    @db.VarChar(45)
+  estado     String    @db.Char(2)
+  saldo      Decimal   @db.Decimal(6, 2)
+  recargas   recarga[]
 }
 
 model recarga {
-  idrecarga Int      @id @default(autoincrement())
-  valor     Decimal  @db.Decimal(6, 2)
-  data      DateTime @db.Date
-}
+  id            Int         @id @default(autoincrement())
+  valor         Float
+  data          DateTime
+  passageiro_id Int?
+  passageiro    passageiro? @relation(fields: [passageiro_id], references: [id], onUpdate: SetNull, map: "fk_recarga_passageiro1")
 
-model user {
-  id         Int          @id @default(autoincrement())
-  nome       String       @db.VarChar(100)
-  email      String       @db.VarChar(250)
-  telefone   String?      @db.VarChar(11)
-  senha      String       @db.VarChar(45)
-  passageiro passageiro[]
+  @@index([passageiro_id], map: "fk_recarga_passageiro1")
 }
 
 model viagem {

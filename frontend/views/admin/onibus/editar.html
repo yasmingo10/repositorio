@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Corona Admin</title>
+    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.png" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+                <a class="sidebar-brand brand-logo" href="#"><img src="/assets/images/logo.svg" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo-mini" href="#"><img src="/assets/images/logo-mini.svg"
+                        alt="logo" /></a>
+            </div>
+            <ul class="nav">
+                <li class="nav-item profile">
+                    <div class="profile-desc">
+                        <div class="profile-pic">
+                            <div class="count-indicator">
+                                <img class="img-xs rounded-circle " src="/assets/images/faces/face15.jpg" alt="">
+                            </div>
+                            <div class="profile-name">
+                                <h5 class="mb-0 font-weight-normal">Nome</h5>
+                                <span>Administrador</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item nav-category">
+                    <span class="nav-link">Navegação</span>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" href="#">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-speedometer"></i>
+                        </span>
+                        <span class="menu-title">Gerenciamento</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                        aria-controls="ui-basic">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-laptop"></i>
+                        </span>
+                        <span class="menu-title">Admin de Usuarios</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="pages/Motorista.html">Motorista</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="pages/Passe.html">Passe</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="pages/Linhas.html">Linhas</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="pages/Onibus.html">Onibus</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="container-fluid page-body-wrapper">
+            <nav class="navbar p-0 fixed-top d-flex flex-row">
+                <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo-mini" href="#"><img src="/assets/images/logo-mini.svg"
+                            alt="logo" /></a>
+                </div>
+                <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button"
+                        data-toggle="minimize">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
+                    <ul class="navbar-nav w-100">
+                        <li class="nav-item w-100">
+                            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                                <input type="text" class="form-control" placeholder="Pesquisa">
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav navbar-nav-right">
+                        </li>
+
+                    </ul>
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                        data-toggle="offcanvas">
+                        <span class="mdi mdi-format-line-spacing"></span>
+                    </button>
+                </div>
+            </nav>
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="page-header">
+                        <h3 class="page-title"> Dados do Onibus </h3>
+                        <nav aria-label="breadcrumb">
+
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Informações</h4>
+                                    <main class="container">
+
+                                        <form id="form">
+                                            <div class="form-group">
+                                                <label for="placa">Placa do Veiculo</label>
+                                                <input type="text" class="form-control" id="placa" name="placa"
+                                                    placeholder="placa">
+                                            </div>
+                                           
+
+                                            <div class="col-12">
+                                                <input class="btn btn-primary w-100" type="submit"
+                                                    value="Salvar Alterações" />
+                                            </div>
+                                        </form>
+                                    </main>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="footer">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
+                                empresa.com
+                                2023</span>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <!-- ... Seu código HTML ... -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                try {
+                    const id = window.location.pathname.split('/').pop();
+                    const response = await axios.get(`http://localhost:5000/onibus/exibir/${id}`);
+                    const onibus = response.data;
+        
+                    const form = document.querySelector('#form');
+                    const placaInput = document.querySelector('#placa');
+        
+                    placaInput.value = onibus.placa;
+        
+                    form.addEventListener('submit', async (event) => {
+                        event.preventDefault();
+        
+                        if (form.checkValidity()) {
+                            try {
+                                console.log('Antes de enviar a requisição');
+        
+                                const formData = new FormData(form);
+                                const data = {};
+                                formData.forEach((value, key) => {
+                                    data[key] = value;
+                                });
+        
+                                console.log('Dados enviados pelo frontend:', data);
+        
+                                await axios.patch(`http://localhost:5000/onibus/editar/${id}`, data, {
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded',
+                                    },
+                                });
+        
+                                alert("Onibus editado com sucesso.");
+                            } catch (error) {
+                                console.log(error);
+                                alert(error.response.data.mensagem);
+                            }
+                        }
+        
+                        form.classList.add('was-validated');
+                    }, false);
+                } catch (error) {
+                    console.log(error);
+        
+                    if (error?.response?.status === 404) {
+                        alert("Onibus não encontrado.");
+                    } else {
+                        alert(error.response.data.mensagem);
+                    }
+                }
+            });
+        </script>
+        </body>
+        </html>

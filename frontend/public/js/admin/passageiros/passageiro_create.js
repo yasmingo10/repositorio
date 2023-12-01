@@ -6,15 +6,33 @@ document.addEventListener("DOMContentLoaded", () => {
         
         event.preventDefault();
         const formData = new FormData(form);
-        const data = {nome: formData.get("nome"), cpf: formData.get("cpf"), nascimento: formData.get("nascimento"), telefone: formData.get("telefone"), email: formData.get("email"), sexo: formData.get("sexo"), endereco: formData.get("endereco"), cidade: formData.get("cidade"), estado: formData.get("estado")}
+        
+        // Formate a data de nascimento para o formato ISO-8601
+        const dataNascimento = new Date(formData.get("nascimento"));
+        const nascimentoISO = dataNascimento.toISOString();
+
+        const data = {
+            nome: formData.get("nome"),
+            cpf: formData.get("cpf"),
+            nascimento: nascimentoISO, // Use a data formatada
+            telefone: formData.get("telefone"),
+            email: formData.get("email"),
+            sexo: formData.get("sexo"),
+            endereco: formData.get("endereco"),
+            cidade: formData.get("cidade"),
+            estado: formData.get("estado"),
+            saldo: 0,
+        };
+
         if (form.checkValidity()) {
             try {
                 const response = await axios.post(
                     "http://localhost:5000/passageiros/cadastrar",
-                    data);
-                    console.log(response.data);
-                    form.reset();
-                    alert(`Passageiro cadastrado com sucesso! id=${response.data.passageiros.id}`)
+                    data
+                );
+                console.log(response.data);
+                form.reset();
+                alert(`Passageiro cadastrado com sucesso! id=${response.data.passageiros.id}`);
                 // window.location.href = `http://localhost:4000/`;
             } catch (error) {
                 console.log(error.message);

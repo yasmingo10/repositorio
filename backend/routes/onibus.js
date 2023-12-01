@@ -48,18 +48,21 @@ router.get('/exibir/:id', async (req, res) =>{
 /*Metodo patch*/
 router.patch('/editar/:id', async (req, res) =>{
   try {
+  console.log('Dados recebidos no backend:', req.body);
   const id = Number(req.params.id);
   const data = req.body;
   const atualizarOnibus = await prisma.onibus.update({
+    
     where: {
       id: id
     },
+
     data: data
   });
   res.json(atualizarOnibus);
 }
 catch (error){
-  console.log(error);
+  console.log('Erro no backend:', error);
   res.status(404).json({ error: "Erro ao atualizar onibus!"});
 }
 });

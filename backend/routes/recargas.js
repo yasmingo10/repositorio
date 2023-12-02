@@ -4,7 +4,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 /* GET*/
-router.get('/', async function(req, res, next) {
+router.get('/listar', async function(req, res, next) {
   try {
     const recargas = await prisma.recarga.findMany();
     res.json(recargas);
@@ -17,55 +17,45 @@ router.get('/', async function(req, res, next) {
 /* POST */
 router.post("/recarregar", async (req, res, next) => {
   try {
-    const { valor, data  } = req.body;
+    console.log('Recebendo requisição de recarga:', req.body);
+
+    const { cpf, valor, data } = req.body;
+
+    const passageiro = await prisma.passageiro.findUnique({
+      where: { cpf },
+    });
+
+    if (!passageiro) {
+      return res.status(404).json({ error: "Passageiro não encontrado" });
+    }
+
+    const novoSaldo = passageiro.saldo + parseFloat(valor);
+
+    await prisma.passageiro.update({
+      where: { id: passageiro.id },
+      data: { saldo: novoSaldo },
+    });
 
     const novaRecarga = await prisma.recarga.create({
       data: {
-        valor,
-         data
+        valor: parseFloat(valor),
+        data,
+        passageiro: {
+          connect: { id: passageiro.id },
+        },
       },
     });
 
-    res.json(novaRecarga);
+    // Retorne as informações desejadas em um único objeto JSON
+    res.json({
+      passageiro: { nome: passageiro.nome },
+      valor: parseFloat(valor),
+      recarga: novaRecarga,
+    });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Erro ao efetuar recarga"});
+    res.status(500).json({ error: "Erro ao efetuar recarga" });
   }
-});
-
-/*GET através do ID*/
-router.get('/:id', async (req, res) =>{
-  try {
-    const id = Number(req.params.id);
-    const idRecarga = await prisma.recarga.findUnique({
-      where: {
-        id: id
-      }
-    });
-    res.json(idRecarga)
-  } catch (error) {
-    console.log(error);
-    res.status(404).json({ error: "Recarga não encontrada"})
-  }
-});
-
-/*Metodo patch*/
-router.patch('/:id', async (req, res) =>{
-  try {
-  const id = Number(req.params.id);
-  const data = req.body;
-  const atualizarRecarga = await prisma.recarga.update({
-    where: {
-      id: id
-    },
-    data: data
-  });
-  res.json(atualizarRecarga);
-}
-catch (error){
-  console.log(error);
-  res.status(404).json({ error: "Erro ao editar recarga!"});
-}
 });
 
 /*Delete*/

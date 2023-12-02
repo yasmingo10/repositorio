@@ -190,7 +190,7 @@
                     const id = window.location.pathname.split('/').pop();
                     await axios.delete(`http://localhost:5000/motoristas/excluir/${id}`);
                     alert("Motorista deletado com sucesso.");
-                    window.location.href = "admin/motorista/cadastrar";
+                    window.location.href = "/admin/motorista/cadastrar";
                 } catch (error) {
                     console.log(error);
                     alert("Erro ao deletar o motorista.");

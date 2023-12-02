@@ -7,14 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
         const formData = new FormData(form);
         
-        // Formate a data de nascimento para o formato ISO-8601
         const dataNascimento = new Date(formData.get("nascimento"));
         const nascimentoISO = dataNascimento.toISOString();
 
         const data = {
             nome: formData.get("nome"),
             cpf: formData.get("cpf"),
-            nascimento: nascimentoISO, // Use a data formatada
+            nascimento: nascimentoISO,
             telefone: formData.get("telefone"),
             email: formData.get("email"),
             sexo: formData.get("sexo"),
@@ -33,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(response.data);
                 form.reset();
                 alert(`Passageiro cadastrado com sucesso! id=${response.data.passageiros.id}`);
-                // window.location.href = `http://localhost:4000/`;
             } catch (error) {
                 console.log(error.message);
             }

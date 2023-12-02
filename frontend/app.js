@@ -9,6 +9,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 var clienteRouter = require('./routes/cliente');
+var catracaRouter = require('./routes/catraca');
+
 
 var app = express();
 
@@ -27,6 +29,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 app.use('/cliente', clienteRouter);
+app.use('/catraca', catracaRouter);
 
 var clienteRouter = require('./routes/cliente');
 app.use('/cliente', clienteRouter);

@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(response.data);
                 form.reset();
                 alert(`Motorista cadastrado com sucesso! id=${response.data.motorista.id}`)
-                // window.location.href = `http://localhost:4000/admin/motorista/:id`;
+                //  window.location.href = `/admin/motorista/exibir/id=${response.data.motorista.id}`;
             } catch (error) {
                 console.log(error.message);
             }

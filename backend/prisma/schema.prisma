@@ -14,7 +14,6 @@ model linha {
   horariosaida   DateTime @db.DateTime(0)
   horariochegada DateTime @db.DateTime(0)
   nome           String   @db.VarChar(80)
-  viagem         viagem[]
 }
 
 model motorista {
@@ -24,18 +23,16 @@ model motorista {
   sexo       String?  @db.Char(1)
   foto       String?  @db.VarChar(250)
   admissao   DateTime @db.Date
-  viagem     viagem[]
 }
 
 model onibus {
-  id     Int      @id @default(autoincrement())
-  placa  String   @db.VarChar(8)
-  viagem viagem[]
+  id    Int    @id @default(autoincrement())
+  placa String @db.VarChar(8)
 }
 
 model passageiro {
   id         Int       @id @default(autoincrement())
-  cpf        String    @unique @db.Char(11)
+  cpf        String    @unique @db.Char(16)
   nome       String    @db.VarChar(100)
   nascimento DateTime  @db.Date
   sexo       String?   @db.Char(1)
@@ -51,24 +48,8 @@ model passageiro {
 model recarga {
   id            Int         @id @default(autoincrement())
   valor         Float
-  data          DateTime
   passageiro_id Int?
   passageiro    passageiro? @relation(fields: [passageiro_id], references: [id], onUpdate: SetNull, map: "fk_recarga_passageiro1")
 
   @@index([passageiro_id], map: "fk_recarga_passageiro1")
-}
-
-model viagem {
-  id           Int        @id @default(autoincrement())
-  datahora     DateTime   @db.DateTime(0)
-  linha_id     Int?
-  motorista_id Int?
-  onibus_id    Int?
-  linha        linha?     @relation(fields: [linha_id], references: [id], onUpdate: SetNull, map: "fk_viagem_linha1")
-  motorista    motorista? @relation(fields: [motorista_id], references: [id], onUpdate: SetNull, map: "fk_viagem_motorista1")
-  onibus       onibus?    @relation(fields: [onibus_id], references: [id], onUpdate: SetNull, map: "fk_viagem_onibus1")
-
-  @@index([linha_id], map: "fk_viagem_linha1_idx")
-  @@index([motorista_id], map: "fk_viagem_motorista1_idx")
-  @@index([onibus_id], map: "fk_viagem_onibus1_idx")
 }

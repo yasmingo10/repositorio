@@ -42,14 +42,14 @@
               <h2 style="color: #0d6efd;" class="h2 mb-3">Desejo recarregar!</h2>
           
               <div class="form-floating">
-                <input onsubmit="return validarCPF()" type="text" class="form-control" id="cpf" placeholder="___.___.___-__" oninput="formatarCPF(this)" required>
+                <input onsubmit="return validarCPF()" name="cpf" type="text" class="form-control" id="cpf" placeholder="___.___.___-__" oninput="formatarCPF(this)" required>
                 <label for="cpf">Insira o CPF do passageiro</label>
               </div>
               <div class="form-floating mt-2">
-                <input type="text" class="form-control" id="valor" name="valor" placeholder="0.00" oninput="formatarRecarga(this)" required>
+                <input type="text" name="valor" class="form-control" id="valor" name="valor" placeholder="0.00" oninput="formatarRecarga(this)" required>
                 <label for="valor">Valor da recarga (R$)</label>
               </div>
-              <button class="btn mt-2 btn-primary w-100 py-2" type="submit" value="efetuar" onclick="efetuarRecarga()">Efetuar recarga</button>
+              <button class="btn mt-2 btn-primary w-100 py-2" type="submit" value="efetuar" >Efetuar recarga</button>
             </form>
         </main>
 
@@ -148,5 +148,60 @@
         crossorigin="anonymous"></script>
     <script src="/js/cliente/recarga.js"></script>
     <script src="/js/cliente/recarga/efetuar_recarga.js"></script>
+    <script>
+      function efetuarRecarga() {
+          const cpf = document.getElementById("cpf").value;
+          const valor = document.getElementById("valor").value;
+  
+          // Adicione um alerta de confirmação
+          const confirmacao = confirm(`Deseja recarregar o valor de R$${valor}?`);
+          if (!confirmacao) {
+              // Se o usuário clicar em "Cancelar" no alerta, interrompa o processo
+              return false;
+          }
+  
+          // Enviar os dados para o backend
+          fetch("http://localhost:5000/recargas/recarregar", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ cpf, valor }),
+          })
+              .then((response) => response.json())
+              .then((data) => {
+                  // Lógica de resposta do backend
+                  console.log(data);
+  
+                  // Exibir mensagem de sucesso
+                  alert(`${data.passageiro.nome}, você efetuou uma recarga de R$${data.valor}`);
+  
+                  // Adicionar a mensagem ao final do corpo
+                  mostrarMensagem(data.passageiro.nome, data.valor);
+              })
+              .catch((error) => {
+                  console.error("Erro ao enviar recarga:", error);
+                  // Exibir mensagem de erro
+                  alert("Erro ao efetuar recarga. Por favor, tente novamente.");
+              });
+  
+          // Retornar false para impedir a submissão padrão do formulário
+          return false;
+      }
+  
+      function mostrarMensagem(nome, valor) {
+          // Criar elemento div para exibir a mensagem
+          const mensagemDiv = document.createElement("div");
+          mensagemDiv.innerHTML = `<p>${nome}, você efetuou uma recarga de R$ ${valor.toFixed(2)}.</p>`;
+  
+          // Adicionar a mensagem ao final do corpo (ou em outro lugar desejado)
+          document.body.appendChild(mensagemDiv);
+      }
+  
+      // Adicionar um listener ao formulário para chamar efetuarRecarga ao enviar
+      document.getElementById("recargaForm").addEventListener("submit", efetuarRecarga);
+  </script>
+  
+  
 </body>
 </html>

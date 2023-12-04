@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Corona Admin</title>
+    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          <a class="sidebar-brand brand-logo" href="/index.html"><img src="/assets/images/logo.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="/index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <img class="img-xs rounded-circle " src="/assets/images/faces/face15.jpg" alt="">
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">Nome</h5>
+                  <span>Administrador</span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item nav-category">
+            <span class="nav-link">Navegação</span>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="/index.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Gerenciamento</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Admin de Usuarios</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/Motorista.html">Motorista</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/Passe.html">Passe</a></li>
+                <li class="nav-item"> <a class="nav-link"   href="../../pages/ui-features/Linhas.html">Linhas</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/Onibus.html">Onibus</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="container-fluid page-body-wrapper">
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="/index.html"><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+              <span class="mdi mdi-menu"></span>
+            </button>
+            <ul class="navbar-nav navbar-nav-right">
+              </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span class="mdi mdi-format-line-spacing"></span>
+            </button>
+          </div>
+        </nav>
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+                <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Passageiros Ativos</h4>
+                      </p>
+                      <div class="table-responsive">
+                        <table class="table table-striped" id="passageiros">
+                          <thead>
+                            <tr>
+                              <th> ID </th>
+                              <th> Nome </th>
+                              <th> CPF </th>
+                              <th> Nascimento </th>
+                              <th> Telefone </th>
+                              <th> Email </th>
+                              <th> Gênero </th>
+                              <th> Endereço </th>
+                              <th> Cidade </th>
+                              <th> Estado </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+         
+              </div>
+          </div>
+         
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © empresa.com 2023</span>
+            </div>
+          </footer>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="/js/admin/passageiros/passageiro_create.js"></script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const tbody = document.querySelector('#passageiros tbody');
+    
+                const response = await axios.get('http://localhost:5000/passageiros/listar'); 
+                response.data.forEach(passageiro => {
+                    const tr = document.createElement('tr');
+
+                    const codigoTd = document.createElement('td');
+                codigoTd.textContent = passageiro.id;
+                tr.appendChild(codigoTd);
+    
+                    const nomeTd = document.createElement('td');
+                    nomeTd.textContent = passageiro.nome;
+                    tr.appendChild(nomeTd);
+    
+                    const cpfTd = document.createElement('td');
+                    cpfTd.textContent = passageiro.cpf;
+                    tr.appendChild(cpfTd);
+    
+                    const nascimentoTd = document.createElement('td');
+                    nascimentoTd.textContent = passageiro.nascimento;
+                    tr.appendChild(nascimentoTd);
+    
+                    const telefoneTd = document.createElement('td');
+                    telefoneTd.textContent = passageiro.telefone;
+                    tr.appendChild(telefoneTd);
+    
+                    const emailTd = document.createElement('td');
+                    emailTd.textContent = passageiro.email;
+                    tr.appendChild(emailTd);
+
+                    const sexoTd = document.createElement('td');
+                    sexoTd.textContent = passageiro.sexo;
+                    tr.appendChild(sexoTd);
+
+                    const enderecoTd = document.createElement('td');
+                    enderecoTd.textContent = passageiro.endereco;
+                    tr.appendChild(enderecoTd);
+
+                    const cidadeTd = document.createElement('td');
+                    cidadeTd.textContent = passageiro.cidade;
+                    tr.appendChild(cidadeTd);
+
+                    const estadoTd = document.createElement('td');
+                    estadoTd.textContent = passageiro.estado;
+                    tr.appendChild(estadoTd);
+
+                    const acoesTd = document.createElement('td');
+                const exibirLink = `<a class="btn btn-primary mr-2" href="/admin/passageiro/exibir/${passageiro.id}">Exibir</a>`;
+                const editarLink = `<a class="btn btn-secondary mr-2"  href="/admin/passageiro/editar/${passageiro.id}">Editar</a>`;
+                const deletarLink = `<a class="btn btn-danger mr-2" href="/admin/passageiro/excluir/${passageiro.id}">Excluir</a>`;
+                acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
+                tr.appendChild(acoesTd);
+
+                tbody.appendChild(tr);
+                });
+    
+            } catch (error) {
+                console.log(error);
+                alert(error.response.data.mensagem);
+            }
+        });
+    </script>
+  </body>
+</html>

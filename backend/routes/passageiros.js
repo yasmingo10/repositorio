@@ -72,22 +72,43 @@ router.get('/exibir/:id', async function(req, res, next) {
   }
 });
 
-router.patch('/editar/:id', async function(req, res, next) {
+router.patch('/editar/:id', async (req, res) => {
   try {
+    console.log('Dados recebidos no backend:', req.body);
     const id = Number(req.params.id);
-    const data = req.body;
-    const atualizarPassageiro = await prisma.passageiro.update({
-      where: {
-        id: id,
+    
+    const nome = req.body.nome || null;
+    const cpf = req.body.cpf || null;
+    const nascimento = req.body.nascimento ? new Date(req.body.nascimento).toISOString() : null;
+    const telefone = req.body.telefone || null;
+    const email = req.body.email || null;
+    const sexo = req.body.sexo || null;
+    const endereco = req.body.endereco || null;
+    const cidade = req.body.cidade || null;
+    const estado = req.body.estado || null;
+
+    const passageiroAtualizado = await prisma.passageiro.update({
+      where: { id },
+      data: {
+        nome,
+        cpf,
+        nascimento,
+        telefone,
+        email,
+        sexo,
+        endereco,
+        cidade,
+        estado,
       },
-      data: data,
     });
-    res.json(atualizarPassageiro);
+
+    res.json(passageiroAtualizado);
   } catch (error) {
-    console.log(error);
-    res.status(404).json({ error: 'Erro ao atualizar passageiro!' });
+    console.log('Erro no backend:', error);
+    res.status(404).json({ error: "Erro ao atualizar Passageiro!" });
   }
 });
+
 
 router.delete('/excluir/:id', async function(req, res, next) {
   try {

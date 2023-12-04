@@ -3,17 +3,6 @@ const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-/* GET*/
-router.get('/listar', async function(req, res, next) {
-  try {
-    const recargas = await prisma.recarga.findMany();
-    res.json(recargas);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({error: "Erro ao recuperar recargas."})
-  }
-});
-
 /* POST */
 router.post("/recarregar", async (req, res, next) => {
   try {
@@ -29,12 +18,7 @@ router.post("/recarregar", async (req, res, next) => {
       return res.status(404).json({ error: "Passageiro não encontrado" });
     }
 
-    const novoSaldo = passageiro.saldo + parseFloat(valor);
-
-    await prisma.passageiro.update({
-      where: { id: passageiro.id },
-      data: { saldo: novoSaldo },
-    });
+   
 
     const novaRecarga = await prisma.recarga.create({
       data: {
@@ -45,8 +29,14 @@ router.post("/recarregar", async (req, res, next) => {
         },
       },
     });
+    
+    const novoSaldo = parseFloat(valor) + passageiro.saldo;
 
-    // Retorne as informações desejadas em um único objeto JSON
+    await prisma.passageiro.update({
+        where: { id: passageiro.id },
+        data: { saldo: novoSaldo },
+    });
+
     res.json({
       passageiro: { nome: passageiro.nome },
       valor: parseFloat(valor),
@@ -58,25 +48,5 @@ router.post("/recarregar", async (req, res, next) => {
   }
 });
 
-/*Delete*/
-router.delete('/:id', async (req, res)=>{
-  try {
-    const id = Number(req.params.id);
-    await prisma.recarga.delete({
-      where:{
-        id: id
-      }
-    });
-    res.status(204).end();
-  } catch (error) {
-    console.log(error);
-  res.status(500).json({error: "Erro ao excluir recargali."})
-  }
-});
-
-/*Para todas as rotas não existentes*/
-router.all('*', (req, res) =>{
-  res.status(501).end();
-});
 
 module.exports = router;

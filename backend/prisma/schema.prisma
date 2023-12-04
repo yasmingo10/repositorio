@@ -8,12 +8,12 @@ datasource db {
 }
 
 model linha {
-  id             Int      @id @default(autoincrement())
-  localsaida     String   @db.VarChar(255)
-  localdestino   String   @db.VarChar(255)
-  horariosaida   DateTime @db.DateTime(0)
-  horariochegada DateTime @db.DateTime(0)
-  nome           String   @db.VarChar(80)
+  id             Int       @id @default(autoincrement())
+  localsaida     String?   @db.VarChar(255)
+  localdestino   String?   @db.VarChar(255)
+  horariosaida   DateTime? @db.DateTime(0)
+  horariochegada DateTime? @db.DateTime(0)
+  nome           String?   @db.VarChar(80)
 }
 
 model motorista {
@@ -47,7 +47,7 @@ model passageiro {
 
 model recarga {
   id            Int         @id @default(autoincrement())
-  valor         Float
+  valor         Decimal     @db.Decimal(6, 2)
   passageiro_id Int?
   passageiro    passageiro? @relation(fields: [passageiro_id], references: [id], onUpdate: SetNull, map: "fk_recarga_passageiro1")
 

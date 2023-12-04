@@ -52,7 +52,7 @@ router.get('/exibir/:id', async (req, res) =>{
 });
 
 /*Metodo patch*/
-router.put('/editar/:id', async (req, res) =>{
+router.patch('/editar/:id', async (req, res) =>{
   try {
   const id = Number(req.params.id);
   const data = req.body;

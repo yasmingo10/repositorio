@@ -162,54 +162,65 @@
                 </div>
             </div>
         </div>
-        <!-- ... Seu código HTML ... -->
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      try {
+        <script>
+           document.addEventListener('DOMContentLoaded', async () => {
+    try {
         const id = window.location.pathname.split('/').pop();
         const response = await axios.get(`http://localhost:5000/motoristas/exibir/${id}`);
         const motorista = response.data;
-  
+
         const form = document.querySelector('#form');
         const nomeInput = document.querySelector('#nome');
-        
+        const nascimentoInput = document.querySelector('#nascimento');
+        const sexoInput = document.querySelector('#sexo');
+        const fotoInput = document.querySelector('#foto');
+        const admissaoInput = document.querySelector('#admissao');
+
         nomeInput.value = motorista.nome;
-  
+        nascimentoInput.value = motorista.nascimento;
+        sexoInput.value = motorista.sexo;
+        admissaoInput.value = motorista.admissao;
+
         form.addEventListener('submit', async (event) => {
-          event.preventDefault();
-  
-          if (form.checkValidity()) {
+        event.preventDefault();
+
+        if (form.checkValidity()) {
             try {
-              const formData = new FormData(form);
-              await axios.put(`http://localhost:5000/motoristas/editar/${id}`, formData, {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-              });
-  
-              alert("Motorista editado com sucesso.");
-            //   window.location.href = `/motoristas/exibir/${id}`;
+                const formData = new FormData(form);
+
+                formData.set('nascimento', new Date(nascimentoInput.value).toISOString());
+                formData.set('admissao', new Date(admissaoInput.value).toISOString());
+
+                console.log('Dados enviados pelo frontend:', formData);
+
+                await axios.patch(`http://localhost:5000/motoristas/editar/${id}`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+
+                alert("Motorista editado com sucesso.");
             } catch (error) {
-              console.log(error);
-              alert(error.response.data.mensagem);
+                console.log(error);
+                alert(error.response.data.mensagem);
             }
-          }
-  
-          form.classList.add('was-validated');
-        }, false);
-      } catch (error) {
-        console.log(error);
-  
-        if (error?.response?.status === 404) {
-          alert("Motorista não encontrado.");
-        //   window.location.href = "/motoristas/listar";
-        } else {
-          alert(error.response.data.mensagem);
         }
-      }
-    });
-  </script>
+
+        form.classList.add('was-validated');
+    }, false);
+    } catch (error) {
+        console.log(error);
+
+        if (error?.response?.status === 404) {
+            alert("Motorista não encontrado.");
+        } else {
+            alert(error.response.data.mensagem);
+        }
+    }
+});
+
+            </script>
 </body>
 </html>

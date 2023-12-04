@@ -11,8 +11,6 @@ const linhasRouter = require('./routes/linhas')
 const onibusRouter = require('./routes/onibus')
 const passageirosRouter = require('./routes/passageiros')
 const recargasRouter = require('./routes/recargas')
-const cartoesRouter = require('./routes/cartoes')
-const viagensRouter =require('./routes/viagens')
 
 const app = express();
 
@@ -39,7 +37,5 @@ app.use('/linhas', linhasRouter);
 app.use('/onibus', onibusRouter);
 app.use('/passageiros', passageirosRouter);
 app.use('/recargas', recargasRouter);
-app.use('/cartoes', cartoesRouter);
-app.use('/viagens', viagensRouter);
 
 module.exports = app;

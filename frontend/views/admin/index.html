@@ -1,30 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Corona Admin</title>
-    <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
     <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
   </head>
   <body>
     <div class="container-scroller">
-      <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
           <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
@@ -33,15 +23,9 @@
         <ul class="nav">
           <li class="nav-item profile">
             <div class="profile-desc">
-              <div class="profile-pic">
-                <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
-                </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Nome</h5>
-                  <span>Administrador</span>
+                  <h5 class="mb-0 font-weight-normal">Administrador</h5>
                 </div>
-              </div>
             </div>
           </li>
           <li class="nav-item nav-category">
@@ -52,7 +36,7 @@
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
-              <span class="menu-title">Gerenciamento</span>
+              <span class="menu-title font-weight-normal" style="color: white;">Gerenciamento</span>
             </a>
           </li>
           <li class="nav-item menu-items">
@@ -60,23 +44,20 @@
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
               </span>
-              <span class="menu-title">Admin de Usuarios</span>
-              <i class="menu-arrow"></i>
+              <span class="menu-title font-weight-normal" style="color: white;">Registrar:</span>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div  id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/Motorista.html">Motorista</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/Passe.html">Passe</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/Linhas.html">Linhas</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/Onibus.html">Onibus</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/motorista/cadastrar">Motorista</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/passageiro/cadastrar">Passageiro</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/linha/cadastrar">Linhas</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/onibus/cadastrar">Onibus</a></li>
               </ul>
             </div>
           </li>
         </ul>
       </nav>
-      <!-- partial -->
       <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
             <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
@@ -85,19 +66,11 @@
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
               <span class="mdi mdi-menu"></span>
             </button>
-            <ul class="navbar-nav w-100">
-              <li class="nav-item w-100">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Pesquisa">
-                </form>
-              </li>
-            </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>
         </nav>
-        <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
@@ -160,73 +133,19 @@
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Order Status</h4>
+                    <h4 class="card-title">Últimos passageiros cadastrados:</h4>
                     <div class="table-responsive">
-                      <table class="table">
+                      <table class="table" id="passageiros">
                         <thead>
                           <tr>
+                            <th> ID </th>
                             <th> Nome </th>
-                            <th> Identificador </th>
-                            <th> Data de Inicio </th>
-                            <th> Carga Horaria </th>
+                            <th> CPF </th>
+                            <th> Email </th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>
-                              <img src="assets/images/faces/face1.jpg" alt="image" />
-                              <span class="pl-2">Henry Klein</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Concluida</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="assets/images/faces/face2.jpg" alt="image" />
-                              <span class="pl-2">Estella Bryan</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-warning">Em andamento</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="assets/images/faces/face5.jpg" alt="image" />
-                              <span class="pl-2">Lucy Abbott</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-danger">Não concluida</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="assets/images/faces/face3.jpg" alt="image" />
-                              <span class="pl-2">Peter Gill</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Concluida</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <img src="assets/images/faces/face4.jpg" alt="image" />
-                              <span class="pl-2">Sallie Reyes</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Concluida</div>
-                            </td>
-                          </tr>
+                          
                         </tbody>
                       </table>
                     </div>
@@ -235,33 +154,63 @@
               </div>
             </div>
           </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
               <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © empresa.com 2023</span>
             </div>
           </footer>
-          <!-- partial -->
         </div>
-        <!-- main-panel ends -->
       </div>
-      <!-- page-body-wrapper ends -->
     </div>
-      <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
         try {
+          const tbody = document.querySelector('#passageiros tbody');
 
-            const responseQtdMotoristas = await axios.get('http://localhost:5000/motoristas/quantidadeTotal');
-            const qtdMotoristas = responseQtdMotoristas.data;
+          // Código para listar os passageiros
+          const response = await axios.get('http://localhost:5000/passageiros/listar'); 
+          response.data.forEach(passageiro => {
+            const tr = document.createElement('tr');
 
-            const qtdMotoristaElement = document.getElementById('qtd-motorista');
-            qtdMotoristaElement.textContent = qtdMotoristas;
+            // Criação e preenchimento das colunas da tabela
+            const codigoTd = document.createElement('td');
+            codigoTd.textContent = passageiro.id;
+            tr.appendChild(codigoTd);
 
+            const nomeTd = document.createElement('td');
+            nomeTd.textContent = passageiro.nome;
+            tr.appendChild(nomeTd);
+
+            const cpfTd = document.createElement('td');
+            cpfTd.textContent = passageiro.cpf;
+            tr.appendChild(cpfTd);
+
+            const emailTd = document.createElement('td');
+            emailTd.textContent = passageiro.email;
+            tr.appendChild(emailTd);
+
+            const acoesTd = document.createElement('td');
+            const exibirLink = `<a class="btn btn-primary mr-2" href="/admin/passageiro/exibir/${passageiro.id}">Exibir</a>`;
+            const editarLink = `<a class="btn btn-secondary mr-2"  href="/admin/passageiro/editar/${passageiro.id}">Editar</a>`;
+            const deletarLink = `<a class="btn btn-danger mr-2" href="/admin/passageiro/excluir/${passageiro.id}">Excluir</a>`;
+            acoesTd.innerHTML = `${exibirLink} | ${editarLink} | ${deletarLink}`;
+            tr.appendChild(acoesTd);
+
+            tbody.appendChild(tr);
+          });
+
+          // Código para obter a quantidade de motoristas
+          const responseQtdMotoristas = await axios.get('http://localhost:5000/motoristas/quantidadeTotal');
+          const qtdMotoristas = responseQtdMotoristas.data;
+
+          const qtdMotoristaElement = document.getElementById('qtd-motorista');
+          qtdMotoristaElement.textContent = qtdMotoristas;
         } catch (error) {
-            console.log(error);
+          console.log(error);
+          alert(error.response?.data?.mensagem || 'Erro ao carregar dados.');
         }
-    });
-      </script>
+      });
+    </script>
   </body>
 </html>

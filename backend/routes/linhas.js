@@ -4,13 +4,13 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 /* GET*/
-router.get('/listar', async function(req, res, next) {
+router.get('/listar', async function (req, res, next) {
   try {
     const linhas = await prisma.linha.findMany();
     res.json(linhas);
   } catch (error) {
     console.log(error);
-    res.status(500).json({error: "Erro ao recuperar linhas."})
+    res.status(500).json({ error: "Erro ao recuperar linhas." })
   }
 });
 
@@ -19,7 +19,7 @@ router.post("/cadastrar", async (req, res, next) => {
   try {
     const nome = req.body.nome || null;
     const localsaida = req.body.localsaida || null;
-    const localdestino =req.body.localdestino || null;
+    const localdestino = req.body.localdestino || null;
     const isValidTime = (str) => /^([01]\d|2[0-3]):([0-5]\d)$/.test(str);
 
     const horariosaida = isValidTime(req.body.horariosaida)
@@ -29,6 +29,7 @@ router.post("/cadastrar", async (req, res, next) => {
     const horariochegada = isValidTime(req.body.horariochegada)
       ? new Date(`1970-01-01T${req.body.horariochegada}:00`).toISOString()
       : null;
+
     const data = { nome, localsaida, localdestino, horariosaida, horariochegada };
 
     const linha = await prisma.linha.create({ data });
@@ -36,12 +37,12 @@ router.post("/cadastrar", async (req, res, next) => {
     res.json(linha);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Erro ao cadastrar linha!"});
+    res.status(500).json({ error: "Erro ao cadastrar linha!" });
   }
 });
 
 /*GET através do ID*/
-router.get('/exibir/:id', async (req, res) =>{
+router.get('/exibir/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
     const idLinha = await prisma.linha.findUnique({
@@ -52,47 +53,60 @@ router.get('/exibir/:id', async (req, res) =>{
     res.json(idLinha)
   } catch (error) {
     console.log(error);
-    res.status(404).json({ error: "Linha não encontrada!"})
+    res.status(404).json({ error: "Linha não encontrada!" })
   }
 });
 
 /*Metodo patch*/
-router.patch('/editar/:id', async (req, res) =>{
+router.patch('/editar/:id', async (req, res) => {
   try {
-  const id = Number(req.params.id);
-  const data = req.body;
-  const atualizarLinha = await prisma.linha.update({
-    where: {
-      id: id
-    },
-    data: data
-  });
-  res.json(atualizarLinha);
-}
-catch (error){
-  console.log(error);
-  res.status(404).json({ error: "Erro ao atualizar linnha!"});
-}
+    console.log('Dados recebidos no backend:', req.body);
+    const id = Number(req.params.id);
+    
+    const nome = req.body.nome || null;
+    const localsaida = req.body.localsaida || null;
+    const localdestino = req.body.localdestino || null;
+    const horariosaida = req.body.horariosaida ? new Date(`1970-01-01T${req.body.horariosaida}:00`).toISOString() : null;
+    const horariochegada = req.body.horariochegada ? new Date(`1970-01-01T${req.body.horariochegada}:00`).toISOString() : null;
+
+    const linhaAtualizada = await prisma.linha.update({
+      where: { id },
+      data: {
+        nome,
+        localsaida,
+        localdestino,
+        horariosaida,
+        horariochegada,
+      },
+    });
+
+    res.json(linhaAtualizada);
+  } catch (error) {
+    console.log('Erro no backend:', error);
+    res.status(404).json({ error: "Erro ao atualizar linha!" });
+  }
 });
 
+
+
 /*Delete*/
-router.delete('/excluir/:id', async (req, res)=>{
+router.delete('/excluir/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
     await prisma.linha.delete({
-      where:{
+      where: {
         id: id
       }
     });
     res.status(204).end();
   } catch (error) {
     console.log(error);
-  res.status(500).json({error: "Erro ao excluir linha."})
+    res.status(500).json({ error: "Erro ao excluir linha." })
   }
 });
 
 /*Para todas as rotas não existentes*/
-router.all('*', (req, res) =>{
+router.all('*', (req, res) => {
   res.status(501).end();
 });
 

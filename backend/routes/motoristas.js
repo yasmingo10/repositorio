@@ -86,12 +86,7 @@ router.delete('/excluir/:id', async (req, res)=>{
   }
 });
 
-/*Para todas as rotas não existentes*/
-router.all('*', (req, res) =>{
-  res.status(501).end();
-});
-
-router.get('/motoristas/quantidadeTotal', async (req, res) => {
+router.get('/quantidadeTotal', async (req, res) => {
   try {
       const quantidadeTotal = await prisma.motorista.count();
       res.json(quantidadeTotal);

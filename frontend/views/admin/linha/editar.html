@@ -1,131 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
-    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="shortcut icon" href="/assets/images/favicon.png" />
-  </head>
-  <body>
-    <div class="container-scroller">
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="/index.html"><img src="/assets/images/logo.svg" alt="logo" /></a>
-          <a class="sidebar-brand brand-logo-mini" href="/index.html"><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Corona Admin</title>
+  <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="shortcut icon" href="/assets/images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <a class="sidebar-brand brand-logo" href="/index.html"><img src="/assets/images/logo.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="/index.html"><img src="/assets/images/logo-mini.svg"
+            alt="logo" /></a>
+      </div>
+      <ul class="nav">
+        <li class="nav-item profile">
+          <div class="profile-desc">
+            <div class="profile-pic">
+              <div class="count-indicator">
+                <img class="img-xs rounded-circle " src="/assets/images/faces/face15.jpg" alt="">
+              </div>
+              <div class="profile-name">
+                <h5 class="mb-0 font-weight-normal">Nome</h5>
+                <span>Administrador</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item nav-category">
+          <span class="nav-link">Navegação</span>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="/index.html">
+            <span class="menu-icon">
+              <i class="mdi mdi-speedometer"></i>
+            </span>
+            <span class="menu-title">Gerenciamento</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <span class="menu-icon">
+              <i class="mdi mdi-laptop"></i>
+            </span>
+            <span class="menu-title">Admin de Usuarios</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="/pages/ui-features/Motorista.html">Motorista</a></li>
+              <li class="nav-item"> <a class="nav-link" href="/pages/ui-features/Passe.html">Passe</a></li>
+              <li class="nav-item"> <a class="nav-link" href="/pages/ui-features/Linhas.html">Linhas</a></li>
+              <li class="nav-item"> <a class="nav-link" href="/pages/ui-features/Onibus.html">Onibus</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid page-body-wrapper">
+      <nav class="navbar p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo-mini" href="/index.html"><img src="/assets/images/logo-mini.svg"
+              alt="logo" /></a>
         </div>
-        <ul class="nav">
-          <li class="nav-item profile">
-            <div class="profile-desc">
-              <div class="profile-pic">
-                <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="/assets/images/faces/face15.jpg" alt="">
-                </div>
-                <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Nome</h5>
-                  <span>Administrador</span>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item nav-category">
-            <span class="nav-link">Navegação</span>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="/index.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
-              </span>
-              <span class="menu-title">Gerenciamento</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-icon">
-                <i class="mdi mdi-laptop"></i>
-              </span>
-              <span class="menu-title">Admin de Usuarios</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/pages/ui-features/Motorista.html">Motorista</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/pages/ui-features/Passe.html">Passe</a></li>
-                <li class="nav-item"> <a class="nav-link"   href="/pages/ui-features/Linhas.html">Linhas</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/pages/ui-features/Onibus.html">Onibus</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
+        <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <ul class="navbar-nav w-100">
+            <li class="nav-item w-100">
+              <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                <input type="text" class="form-control" placeholder="Pesquisa">
+              </form>
+            </li>
+          </ul>
+          <ul class="navbar-nav navbar-nav-right">
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+            data-toggle="offcanvas">
+            <span class="mdi mdi-format-line-spacing"></span>
+          </button>
+        </div>
       </nav>
-      <div class="container-fluid page-body-wrapper">
-        <nav class="navbar p-0 fixed-top d-flex flex-row">
-          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="/index.html"><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title"> Cadastro de linha </h3>
+            <nav aria-label="breadcrumb">
+            </nav>
           </div>
-          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-              <span class="mdi mdi-menu"></span>
-            </button>
-            <ul class="navbar-nav w-100">
-              <li class="nav-item w-100">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Pesquisa">
-                </form>
-              </li>
-            </ul>
-            <ul class="navbar-nav navbar-nav-right">
-              </li>
-            </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-              <span class="mdi mdi-format-line-spacing"></span>
-            </button>
-          </div>
-        </nav>
-        <div class="main-panel">
-          <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title"> Cadastro de linha </h3>
-              <nav aria-label="breadcrumb">
-              </nav>
-            </div>
-            <div class="row">
-              <div class="col-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Editar a Linha</h4>
-                    <form id="formLinhas" class="forms-sample">
-                      <div class="form-group">
-                        <label for="nome">Nome da Linha</label>
-                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da Linha">
-                      </div>
-                      <div class="form-group">
-                        <label for="localsaida">Local de saida</label>
-                        <input type="text" class="form-control" id="localsaida" name="localsaida" placeholder="Local de saida">
-                      </div>
-                      <div class="form-group">
-                        <label for="localdestino">Local de Destino</label>
-                        <input type="text" class="form-control" id="localdestino" name="localdestino" placeholder="Local de Destino">
-                      </div>
-                      <div class="form-group">
-                        <label for="horariosaida">Horario de saida</label>
-                        <input type="time" class="form-control" id="horariosaida" name="horariosaida" placeholder="Horario de saida">
-                      </div>
-                      <div class="form-group">
-                        <label for="horariochegada">Horario de chegada</label>
-                        <input type="time" class="form-control" id="horariochegada" name="horariochegada" placeholder="Horario de chegada">
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Editar</button>
-                    </form>
-                  </div>
+          <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Editar a Linha</h4>
+                  <form id="form" class="forms-sample">
+                    <div class="form-group">
+                      <label for="nome">Nome da Linha</label>
+                      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da Linha">
+                    </div>
+                    <div class="form-group">
+                      <label for="localsaida">Local de saida</label>
+                      <input type="text" class="form-control" id="localsaida" name="localsaida"
+                        placeholder="Local de saida">
+                    </div>
+                    <div class="form-group">
+                      <label for="localdestino">Local de Destino</label>
+                      <input type="text" class="form-control" id="localdestino" name="localdestino"
+                        placeholder="Local de Destino">
+                    </div>
+                    <div class="form-group">
+                      <label for="horariosaida">Horario de saida</label>
+                      <input type="time" class="form-control" id="horariosaida" name="horariosaida"
+                        placeholder="Horario de saida">
+                    </div>
+                    <div class="form-group">
+                      <label for="horariochegada">Horario de chegada</label>
+                      <input type="time" class="form-control" id="horariochegada" name="horariochegada"
+                        placeholder="Horario de chegada">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Editar</button>
+                  </form>
                 </div>
               </div>
+            </div>
           </div>
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © empresa.com 2023</span>
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © empresa.com
+                2023</span>
             </div>
           </footer>
         </div>
@@ -134,72 +144,72 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', async () => {
-    try {
+      try {
         const id = window.location.pathname.split('/').pop();
-        const response = await axios.get(`http://localhost:5000/motoristas/exibir/${id}`);
-        const motorista = response.data;
-
+        const response = await axios.get(`http://localhost:5000/linhas/exibir/${id}`);
+        const linha = response.data;
+    
         const form = document.querySelector('#form');
         const nomeInput = document.querySelector('#nome');
-        const nascimentoInput = document.querySelector('#nascimento');
-        const sexoInput = document.querySelector('#sexo');
-        const fotoInput = document.querySelector('#foto');
-        const admissaoInput = document.querySelector('#admissao');
-
-        nomeInput.value = motorista.nome;
-        nascimentoInput.value = motorista.nascimento;
-        sexoInput.value = motorista.sexo;
-        admissaoInput.value = motorista.admissao;
-
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            if (form.checkValidity()) {
-                try {
-                    const formData = new FormData();
-                    formData.append('nome', nomeInput.value);
-                    formData.append('nascimento', formatDate(nascimentoInput.value));
-                    formData.append('sexo', sexoInput.value);
-                    formData.append('foto', fotoInput.files[0]);
-                    formData.append('admissao', formatDate(admissaoInput.value));
-
-                    console.log('Dados enviados pelo frontend:', formData);
-
-                    await axios.patch(`http://localhost:5000/motoristas/editar/${id}`, formData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                        },
-                    });
-
-                    alert("Motorista editado com sucesso.");
-                } catch (error) {
-                    console.log(error);
-                    alert(error.response.data.mensagem);
-                }
-            }
-
-            form.classList.add('was-validated');
-        }, false);
-    } catch (error) {
-        console.log(error);
-
-        if (error?.response?.status === 404) {
-            alert("Motorista não encontrado.");
-        } else {
-            alert(error.response.data.mensagem);
-        }
-    }
-});
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toISOString().split('T')[0];
-}
-
-    </script>
-      
-      
-
+        const localsaidaInput = document.querySelector('#localsaida');
+        const localdestinoInput = document.querySelector('#localdestino');
+        const horariosaidaInput = document.querySelector('#horariosaida');
+        const horariochegadaInput = document.querySelector('#horariochegada');
     
-  </body>
+        const formatarHorario = (dataISO) => {
+          const data = new Date(dataISO);
+          return data.toLocaleTimeString('en-US', { hour12: false, hour: 'numeric', minute: 'numeric' });
+        };
+    
+        nomeInput.value = linha.nome;
+        localsaidaInput.value = linha.localsaida;
+        localdestinoInput.value = linha.localdestino;
+        horariosaidaInput.value = formatarHorario(linha.horariosaida);
+        horariochegadaInput.value = formatarHorario(linha.horariochegada);
+    
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+    
+          if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            return;
+          }
+    
+          try {
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+              data[key] = value;
+            });
+    
+            console.log('Dados enviados pelo frontend:', data);
+    
+            await axios.patch(`http://localhost:5000/linhas/editar/${id}`, data, {
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            });
+    
+            alert('Linha editada com sucesso.');
+            window.location.href = `/admin/linha/exibir/${id}`;
+          } catch (error) {
+            console.error(error);
+            alert(error.response?.data?.mensagem || 'Erro ao editar a linha.');
+          }
+        });
+      } catch (error) {
+        console.error(error);
+    
+        if (error?.response?.status === 404) {
+          alert('Linha não encontrada.');
+        } else {
+          alert(error.response?.data?.mensagem || 'Erro ao carregar a linha.');
+        }
+      }
+    });
+    
+    </script>
+
+</body>
+
 </html>

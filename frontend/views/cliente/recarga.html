@@ -158,42 +158,38 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="/js/cliente/recarga.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <script>
-        function efetuarRecarga() {
+        async function efetuarRecarga(event) {
+            event.preventDefault(); 
+    
             const cpf = document.getElementById("cpf").value;
             const valor = document.getElementById("valor").value;
     
-            const confirmacao = confirm(`Deseja recarregar o valor de R$${valor}?`);
+            const confirmacao = window.confirm(`Deseja recarregar o valor de R$${valor}?`);
+    
             if (!confirmacao) {
                 return false;
             }
     
-            fetch("http://localhost:5000/recargas/recarregar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ cpf, valor }),
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                mostrarMensagem(data.passageiro.nome, data.valor);
-            })
-            .catch((error) => {
+            try {
+                const response = await axios.post("http://localhost:5000/recargas/recarregar", {
+                    cpf,
+                    valor
+                });
+    
+                const data = response.data;
+                alert(`${data.passageiro.nome}, você efetuou uma recarga de R$${data.valor}.`);
+            } catch (error) {
                 console.error("Erro ao enviar recarga:", error);
                 alert("Erro ao efetuar recarga. Por favor, tente novamente.");
-            });
+            }
     
             return false;
         }
     
         document.getElementById("recargaForm").addEventListener("submit", efetuarRecarga);
-    
-        function mostrarMensagem(nome, valor) {
-            alert(`${nome}, você efetuou uma recarga de R$${valor.toFixed(2)}.`);
-        }
-    </script>
+    </script>   
     
 
 </body>

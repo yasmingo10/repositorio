@@ -15,73 +15,48 @@ router.get('/listar', async function(req, res, next) {
 });
 
 // Cria um novo passageiro
-router.post('/cadastrar', async function(req, res, next) {
+router.post('/cadastrar', async function (req, res, next) {
   try {
-    const {
-      cpf,
-      nome,
-      nascimento,
-      sexo,
-      email,
-      telefone,
-      endereco,
-      cidade,
-      estado,
-      saldo,
-      recarga: recargaData // Renomeie para evitar conflitos de nomes
-    } = req.body;
+      const {
+          cpf,
+          nome,
+          nascimento,
+          sexo,
+          email,
+          telefone,
+          endereco,
+          cidade,
+          estado,
+          saldo,
+          recarga: recargaData 
+      } = req.body;
 
-    // Crie o passageiro
-    const novoPassageiro = await prisma.passageiro.create({
-      data: {
-        cpf,
-        nome,
-        nascimento,
-        sexo,
-        email,
-        telefone,
-        endereco,
-        cidade,
-        estado,
-        saldo
-      }
-    });
-
-    // Se houver dados de recarga, crie a recarga e associe ao passageiro
-    if (recargaData) {
-      const novaRecarga = await prisma.recarga.create({
-        data: {
-          // Inclua os campos relevantes da recarga aqui
-          // Exemplo: valor, data, etc.
-          // recarga: recargaData
-        }
-      });
-
-      // Associe a recarga recém-criada ao passageiro
-      await prisma.passageiro.update({
-        where: {
-          id: novoPassageiro.id
-        },
-        data: {
-          recarga: {
-            connect: {
-              id: novaRecarga.id
-            }
+      const novoPassageiro = await prisma.passageiro.create({
+          data: {
+              cpf,
+              nome,
+              nascimento,
+              sexo,
+              email,
+              telefone,
+              endereco,
+              cidade,
+              estado,
+              saldo
           }
-        }
       });
-    }
 
-    res.json(novoPassageiro);
+      res.json(novoPassageiro);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro ao cadastrar passageiro!' });
-    next(error);
+      console.error(error);
+      res.status(500).json({ error: 'Erro ao cadastrar passageiro!' });
+      next(error);
   }
 });
 
 
-// Obtém um passageiro pelo ID
+
+
 router.get('/exibir/:id', async function(req, res, next) {
   try {
     const id = Number(req.params.id);
@@ -97,7 +72,6 @@ router.get('/exibir/:id', async function(req, res, next) {
   }
 });
 
-// Atualiza um passageiro pelo ID
 router.patch('/editar/:id', async function(req, res, next) {
   try {
     const id = Number(req.params.id);
@@ -115,7 +89,6 @@ router.patch('/editar/:id', async function(req, res, next) {
   }
 });
 
-// Deleta um passageiro pelo ID
 router.delete('/excluir/:id', async function(req, res, next) {
   try {
     const id = Number(req.params.id);
@@ -131,7 +104,6 @@ router.delete('/excluir/:id', async function(req, res, next) {
   }
 });
 
-// Rota para qualquer outro método não suportado
 router.all('*', (req, res) => {
   res.status(501).end();
 });

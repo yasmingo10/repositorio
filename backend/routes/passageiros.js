@@ -79,8 +79,8 @@ router.patch('/editar/:id', async (req, res) => {
     
     const nome = req.body.nome || null;
     const cpf = req.body.cpf || null;
-    const nascimento = req.body.nascimento ? new Date(req.body.nascimento).toISOString() : null;
-    const telefone = req.body.telefone || null;
+    const nascimento = req.body.nascimento ? new Date(req.body.nascimento) : null;
+      const telefone = req.body.telefone || null;
     const email = req.body.email || null;
     const sexo = req.body.sexo || null;
     const endereco = req.body.endereco || null;

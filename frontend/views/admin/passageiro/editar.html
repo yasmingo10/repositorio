@@ -89,15 +89,14 @@
             <div class="page-header">
               <h3 class="page-title"> Dados do Passageiro</h3>
               <nav aria-label="breadcrumb">
-
               </nav>
             </div>
             <div class="row">
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Informações</h4>
-                    <form id="formPassageiro" class="forms-sample">
+                    <h4 class="card-title">Informações do Passageiro</h4>
+                    <form id="form" class="forms-sample">
                       <div class="form-group">
                         <label for="nome">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
@@ -143,83 +142,95 @@
                   </div>
                 </div>
               </div>
-          </div>
-         
-          <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © empresa.com 2023</span>
             </div>
-          </footer>
+            <footer class="footer">
+              <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © empresa.com
+                  2023</span>
+              </div>
+            </footer>
+          </div>
         </div>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <script>
         document.addEventListener('DOMContentLoaded', async () => {
-        try {
-          const id = window.location.pathname.split('/').pop();
-          const response = await axios.get(`http://localhost:5000/passageiros/exibir/${id}`);
-          const passageiro= response.data;
-      
-          const form = document.querySelector('#form');
-          const nomeInput = document.querySelector('#nome');
-          const cpfInput = document.querySelector('#cpf');
-          
-      
-        //   const formatarHorario = (dataISO) => {
-        //     const data = new Date(dataISO);
-        //     return data.toLocaleTimeString('en-US', { hour12: false, hour: 'numeric', minute: 'numeric' });
-        //   };
-      
-          nomeInput.value = passageiro.nome;
-          cpfInput.value = passageiro.cpf
-        //   localsaidaInput.value = linha.localsaida;
-        //   localdestinoInput.value = linha.localdestino;
-        //   horariosaidaInput.value = formatarHorario(linha.horariosaida);
-        //   horariochegadaInput.value = formatarHorario(linha.horariochegada);
-      
-          form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-      
-            if (!form.checkValidity()) {
-              form.classList.add('was-validated');
-              return;
-            }
-      
-            try {
-              const formData = new FormData(form);
-              const data = {};
-              formData.forEach((value, key) => {
-                data[key] = value;
-              });
-      
-              console.log('Dados enviados pelo frontend:', data);
-      
-              await axios.patch(`http://localhost:5000/passageiros/editar/${id}`, data, {
-                headers: {
-                  'Content-Type': 'application/x-www-form-urlencoded',
-                },
-              });
-      
-              alert('Passageiro editado com sucesso.');
-              window.location.href = `/admin/passageiro/exibir/${id}`;
-            } catch (error) {
-              console.error(error);
-              alert(error.response?.data?.mensagem || 'Erro ao editar passageiro.');
-            }
-          });
-        } catch (error) {
-          console.error(error);
-      
-          if (error?.response?.status === 404) {
-            alert('Passageiro não encontrado.');
-          } else {
-            alert(error.response?.data?.mensagem || 'Erro ao carregar o passageiro.');
-          }
-        }
-      });
-      
-      </script>
+          try {
+            const id = window.location.pathname.split('/').pop();
+            const response = await axios.get(`http://localhost:5000/passageiros/exibir/${id}`);
+            const passageiro = response.data;
+    
+            const form = document.querySelector('#form');
+            const nomeInput = document.querySelector('#nome');
+            const cpfInput = document.querySelector('#cpf');
+            const nascimentoInput = document.querySelector('#nascimento');
+            const telefoneInput = document.querySelector('#telefone');
+            const emailInput = document.querySelector('#email');
+            const sexoInput = document.querySelector('#sexo');
+            const enderecoInput = document.querySelector('#endereco');
+            const cidadeInput = document.querySelector('#cidade');
+            const estadoInput = document.querySelector('#estado');
+    
+            const formatarData = (dataISO) => {
+  const data = new Date(dataISO);
+  const dia = String(data.getDate()).padStart(2, '0');
+  const mes = String(data.getMonth() + 1).padStart(2, '0'); // Mês é base 0
+  const ano = data.getFullYear();
+  return `${ano}-${mes}-${dia}`;
+};
 
-     
-  </body>
-</html>
+            nomeInput.value = passageiro.nome;
+            cpfInput.value = passageiro.cpf;
+            nascimentoInput.value = formatarData(passageiro.nascimento);
+            telefoneInput.value = passageiro.telefone;
+            emailInput.value = passageiro.email;
+            sexoInput.value = passageiro.sexo;
+            enderecoInput.value = passageiro.endereco;
+            cidadeInput.value = passageiro.cidade;
+            estadoInput.value = passageiro.estado;
+    
+            form.addEventListener('submit', async (event) => {
+              event.preventDefault();
+    
+              if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+                return;
+              }
+    
+              try {
+                const formData = new FormData(form);
+                const data = {};
+                formData.forEach((value, key) => {
+                  data[key] = value;
+                });
+    
+                console.log('Dados enviados pelo frontend:', data);
+    
+                await axios.patch(`http://localhost:5000/passageiros/editar/${id}`, data, {
+                  headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                });
+    
+                alert('Passageiro editado com sucesso.');
+                window.location.href = `/admin/passageiro/exibir/${id}`;
+              } catch (error) {
+                console.error(error);
+                alert(error.response?.data?.mensagem || 'Erro ao editar passageiro.');
+              }
+            });
+          } catch (error) {
+            console.error(error);
+    
+            if (error?.response?.status === 404) {
+              alert('Passageiro não encontrado.');
+            } else {
+              alert(error.response?.data?.mensagem || 'Erro ao carregar o passageiro.');
+            }
+          }
+        });
+      </script>
+    
+    </body>
+    
+    </html>

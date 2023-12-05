@@ -1,0 +1,112 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema bussystem
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema bussystem
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `bussystem` DEFAULT CHARACTER SET utf8mb4 ;
+USE `bussystem` ;
+
+-- -----------------------------------------------------
+-- Table `bussystem`.`linha`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bussystem`.`linha` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `localsaida` VARCHAR(255) NULL DEFAULT NULL,
+  `localdestino` VARCHAR(255) NULL DEFAULT NULL,
+  `horariosaida` DATETIME NULL DEFAULT NULL,
+  `horariochegada` DATETIME NULL DEFAULT NULL,
+  `nome` VARCHAR(80) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `bussystem`.`motorista`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bussystem`.`motorista` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(255) NOT NULL,
+  `nascimento` DATE NOT NULL,
+  `sexo` CHAR(1) NULL DEFAULT NULL,
+  `foto` VARCHAR(250) NULL DEFAULT NULL,
+  `admissao` DATE NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 10
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `bussystem`.`onibus`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bussystem`.`onibus` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `placa` VARCHAR(8) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `bussystem`.`passageiro`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bussystem`.`passageiro` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `cpf` CHAR(16) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
+  `nascimento` DATE NOT NULL,
+  `sexo` CHAR(1) NULL DEFAULT NULL,
+  `email` VARCHAR(250) NOT NULL,
+  `telefone` VARCHAR(20) NOT NULL,
+  `endereco` VARCHAR(45) NULL DEFAULT NULL,
+  `cidade` VARCHAR(45) NOT NULL,
+  `estado` CHAR(2) NOT NULL,
+  `saldo` DECIMAL(6,2) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `passageiro_cpf_key` (`cpf` ASC) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 10
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `bussystem`.`recarga`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bussystem`.`recarga` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `valor` DECIMAL(6,2) NOT NULL,
+  `passageiro_id` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_recarga_passageiro1` (`passageiro_id` ASC),
+  CONSTRAINT `fk_recarga_passageiro1`
+    FOREIGN KEY (`passageiro_id`)
+    REFERENCES `bussystem`.`passageiro` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE SET NULL)
+ENGINE = InnoDB
+AUTO_INCREMENT = 38
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

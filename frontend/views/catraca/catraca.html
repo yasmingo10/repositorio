@@ -4,26 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interface Catraca</title>
-    <link rel="stylesheet" href="css/catraca.css">
-    
+    <link rel="stylesheet" href="/css/catraca.css">
+
 </head>
 
 <body>
     <div class="container">
-        
+
         <div id="dataHora"></div>
         <h6>Linha IFSP</h6>
         <h1>APROXIME <br> SEU CARTÃO</h1>
         <img src="./img/cartao-nfc.png" width="250px">
-        
+        <form>
+            <input style="width: 100px; background-color: aliceblue;" type="text">
+            <button type="submit"></button>
+        </form>
         <p>www.liv-transportes.netlify.app</p>
     </div>
-    <form>
-        <input type="text" autofocus>
-        <button type="submit"></button>
-    </form>
+
 
     <script src="/js/catraca/dataHora.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+      
+        form.addEventListener("submit", async function (event) {
+          event.preventDefault();
+      
+          const inputCpf = document.querySelector("input");
+          const cpf = inputCpf.value;
+      
+          try {
+            const response = await fetch("http://localhost:5000/catraca/verificar-saldo", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ cpf }),
+            });
+      
+            const data = await response.json();
+      
+            if (response.ok) {
+              window.location.href = `/catraca/sucesso`;
+            } else {
+
+                window.location.href = `/catraca/negado`;
+
+            }
+          } catch (error) {
+            console.error(error);
+            window.location.href = `/catraca/error`;
+          }
+        });
+      });
+      
+    </script>
+
 </body>
 
 </html>

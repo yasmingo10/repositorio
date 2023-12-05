@@ -13,12 +13,17 @@
         <h1>Falha na leitura</h1>
         <h6>Apresente o cartão <br> novamente </h6>
         <div class="p" id="dataHora"></div>
-        <img src="./img/cartao-nfc.png" width="250px">
+        <img src="/img/cartao-nfc.png" width="250px">
         
         <p>www.liv-transportes.netlify.app</p>
     </div>
 
     <script src="/js/catraca/dataHora.js"></script>
+    <script>
+        setTimeout(() => {
+                window.location.href = `/catraca`;
+              }, 4000);
+    </script>
 </body>
 
 </html>

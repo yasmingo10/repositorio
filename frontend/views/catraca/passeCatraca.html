@@ -4,63 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interface Catraca</title>
-    <link rel="stylesheet" href="css/passeCatraca.css">
+    <link rel="stylesheet" href="/css/passeCatraca.css">
     
 </head>
 
 <body>
     <div class="container">
-        
-        
         <h1>PASSE A CATRACA</h1>
         <div class="p" id="dataHora"></div>
-        <img src="./img/aceito.png" width="200px">
+        <img src="/img/aceito.png" width="200px">
         <div class="info">Nome do passageiro</div>
         <div class="info">Débito: R$-3,60</div>
         <div class="info">Restam: R$96,40</div>
         <p>www.nomedositeprincipal.com</p>
-
-        <form id="saldoForm">
-            <input type="text" id="cartaoNFCInput" autofocus>
-            <button type="submit"></button>
-        </form>
     </div>
 
-    <script src="./js/dataHora.js"></script>
-
-<script>
-document.getElementById("saldoForm").addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    const cartaoNFC = document.getElementById("cartaoNFCInput").value;
-
-    try {
-        const response = await fetch("http://localhost:5000/verificarSaldo", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ cartaoNFC }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            if (data.saldo >= 4.6) {
-                window.location.href = "passeCatraca.html";
-            } else {
-                window.location.href = "saldoInsuficiente.html";
-            }
-        } else {
-            window.location.href = "erroDesconhecido.html";
-        }
-    } catch (error) {
-        console.error("Erro ao verificar saldo:", error);
-        window.location.href = "erroDesconhecido.html";
-    }
-});
-
-</script>
+    <script src="/js/dataHora.js"></script>
+    <script>
+        setTimeout(() => {
+                window.location.href = `/catraca`;
+              }, 4000);
+    </script>
 
 </body>
 

@@ -13,6 +13,7 @@ const linhasRouter = require('./routes/linhas')
 const onibusRouter = require('./routes/onibus')
 const passageirosRouter = require('./routes/passageiros')
 const recargasRouter = require('./routes/recargas')
+const catracaRouter = require('./routes/catraca')
 
 const app = express();
 
@@ -39,5 +40,6 @@ app.use('/linhas', linhasRouter);
 app.use('/onibus', onibusRouter);
 app.use('/passageiros', passageirosRouter);
 app.use('/recargas', recargasRouter);
+app.use('/catraca', catracaRouter);
 
 module.exports = app;

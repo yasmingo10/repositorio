@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cidade: formData.get("cidade"),
             estado: formData.get("estado"),
             saldo: 0,
+            numeroCartao: formData.get("numeroCartao"),
         };
 
         if (form.checkValidity()) {

@@ -4,12 +4,13 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 router.post('/verificar-saldo', async (req, res) => {
-  const { cpf } = req.body;
+  const { numeroCartao } = req.body;
   const valorPassagem = 5; 
 
   try {
+
     const passageiro = await prisma.passageiro.findUnique({
-      where: { cpf },
+        where: { numeroCartao },
     });
 
     if (!passageiro) {
@@ -26,7 +27,7 @@ router.post('/verificar-saldo', async (req, res) => {
         data: { saldo: novoSaldo },
       });
 
-      res.status(200).json({ message: 'Saldo suficiente para passagem' });
+      res.status(200).json({ saldoSuficiente: true });
     } else {
       res.status(403).json({ error: 'Saldo insuficiente. Faça uma recarga.' });
     }

@@ -16,8 +16,8 @@
         <h1>APROXIME <br> SEU CARTÃO</h1>
         <img src="./img/cartao-nfc.png" width="250px">
         <form>
-            <input style="width: 100px; background-color: aliceblue;" type="text">
-            <button type="submit"></button>
+            <input type="text" id="numeroCartaoInput" >
+            <button type="button" onclick="simularLeituraNFC()">Simular Leitura</button>
         </form>
         <p>www.liv-transportes.netlify.app</p>
     </div>
@@ -26,41 +26,73 @@
     <script src="/js/catraca/dataHora.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector("form");
-      
-        form.addEventListener("submit", async function (event) {
-          event.preventDefault();
-      
-          const inputCpf = document.querySelector("input");
-          const cpf = inputCpf.value;
-      
-          try {
-            const response = await fetch("http://localhost:5000/catraca/verificar-saldo", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ cpf }),
-            });
-      
-            const data = await response.json();
-      
-            if (response.ok) {
-              window.location.href = `/catraca/sucesso`;
-            } else {
+    <script>
+      function simularLeituraNFC() {
+          const numeroCartaoInput = document.getElementById("numeroCartaoInput");
 
-                window.location.href = `/catraca/negado`;
+          const numeroCartaoLido = "1234567890123456";
 
-            }
-          } catch (error) {
-            console.error(error);
-            window.location.href = `/catraca/error`;
-          }
-        });
+          const eventoLeituraNFC = new CustomEvent("leituraNFC", {
+              detail: { numeroCartao: numeroCartaoLido },
+          });
+
+          document.dispatchEvent(eventoLeituraNFC);
+
+          numeroCartaoInput.value = numeroCartaoLido;
+      }
+
+      document.addEventListener("leituraNFC", async function (event) {
+    const numeroCartaoLido = event.detail.numeroCartao;
+
+    try {
+        const response = await axios.post(
+            "http://localhost:5000/catraca/verificar-saldo",
+            { numeroCartao: numeroCartaoLido }
+        );
+
+        if (response.data.saldoSuficiente) {
+            window.location.href = `/catraca/sucesso`;
+        } else {
+            window.location.href = `/catraca/negado`;
+        }
+    } catch (error) {
+        console.error(error);
+        window.location.href = `/catraca/error`;
+    }
+});
+
+  </script>
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          const numeroCartaoInput = document.getElementById("numeroCartaoInput");
+  
+          const eventoLeituraNFC = new CustomEvent("leituraNFC", {
+              detail: { numeroCartao: "1234567890123456" },
+          });
+  
+          document.dispatchEvent(eventoLeituraNFC);
+  
+          document.addEventListener("leituraNFC", async function (event) {
+              const numeroCartaoLido = event.detail.numeroCartao;
+  
+              try {
+                  const response = await axios.post(
+                      "http://localhost:5000/catraca/verificar-saldo",
+                      { numeroCartao: numeroCartaoLido }
+                  );
+  
+                  if (response.data.saldoSuficiente) {
+                      window.location.href = `/catraca/sucesso`;
+                  } else {
+                      window.location.href = `/catraca/negado`;
+                  }
+              } catch (error) {
+                  console.error(error);
+                  window.location.href = `/catraca/error`;
+              }
+          });
       });
-      
-    </script>
+  </script> -->
 
 </body>
 

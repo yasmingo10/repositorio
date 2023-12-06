@@ -1,16 +1,40 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Barlow:wght@200&family=Candal&family=Open+Sans:wght@500&family=Oxanium:wght@300;700&family=Shadows+Into+Light&family=Shippori+Mincho&display=swap');
 
-
-/*Início Rodapé*/
-footer {
-    padding: 25px 0;
-    background-color: #f8f9fa;
+body{
+    font-family: 'Shippori Mincho', serif;
+    font-size: 17px;
+}
+h1, p{
+    font-size: 17px;
 }
 
+div:nth-of-type(1){
+    background-attachment: fixed;
+  } 
+::-webkit-scrollbar{
+    width: 15px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background:#0d6efd;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-track{
+    background: rgb(245, 244, 244);
+  }
+
+
+footer {
+    margin-top: 100px;
+    padding: 25px 0;
+    background-color: #f8f9fa;
+    width: 100%;
+}
+footer h4:hover{
+    color: white;
+}
 .container-footer {
-    max-width: 100%;
     padding: 0 4%;
-    margin: auto;
 }
 
 .row-footer {
@@ -36,10 +60,6 @@ footer {
     list-style: none;
 }
 
-.footer-col ul li {
-    margin: 10px 0;
-}
-
 .footer-col ul li a {
     font-size: 18px;
     text-decoration: none;
@@ -50,7 +70,7 @@ footer {
 
 .footer-col ul li a:hover {
     color: #000000;
-    padding-left: 10px;
+    margin-left: 10px;
 }
 
 .footer-col .rede-social {
@@ -109,3 +129,94 @@ footer {
     text-decoration: none;
     color: #0d6efd;
 }
+header{
+    text-decoration: none;
+
+}
+li{
+    margin-right: 30px;
+ }
+ li:hover{
+    color: #022c69;
+    transform: translateY(-5px);
+ }
+
+ button {
+    padding: 15px 20px;
+    border: unset;
+    border-radius: 40px;
+    color: #0d6efd;
+    z-index: 1;
+    background: #fffefe;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    transition: all 250ms;
+    overflow: hidden;
+   }
+   
+   button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #0d6efd;
+    color: white;
+    z-index: -1;
+    transition: all 250ms
+   }
+   
+   button:hover {
+    color: #ffffff;
+    border: none;
+   }
+   
+   button:hover::before {
+    width: 100%;
+   }
+
+
+
+
+@media only screen and (min-width: 1080px) and (max-width: 1920px){
+    header li{
+        font-size: 17px;
+    }
+
+}
+
+.loader {
+    width: 44.8px;
+    height: 44.8px;
+    position: relative;
+    transform: rotate(45deg);
+  }
+  
+  .loader:before,
+  .loader:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50% 50% 0 50%;
+    background: #0000;
+    background-image: radial-gradient(circle 11.2px at 50% 50%,#0000 94%, #ff4747);
+  }
+  
+  .loader:after {
+    animation: pulse-ytk0dhmd 1s infinite;
+    transform: perspective(336px) translateZ(0px);
+  }
+  
+  @keyframes pulse-ytk0dhmd {
+    to {
+      transform: perspective(336px) translateZ(168px);
+      opacity: 0;
+    }
+  }
+    
+  .btn-inscreva-se:hover{
+    background-color: white;
+  }

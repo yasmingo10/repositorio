@@ -138,6 +138,10 @@
                         <label for="estado">Estado</label>
                         <input type="text" class="form-control" id="estado" name="estado" placeholder="Insira a UF">
                       </div>
+                      <div class="form-group">
+                        <label for="numeroCartao">Número da Carteirinha</label>
+                        <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="Número da Carteirinha" required>
+                      </div>
                       <button type="submit" class="btn btn-primary mr-2">Cadastrar</button>
                     </form>
                   </div>
@@ -162,6 +166,7 @@
                       <th> Endereço </th>
                       <th> Cidade </th>
                       <th> Estado </th>
+                      <th>Número do Cartão</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -229,6 +234,10 @@
                     const estadoTd = document.createElement('td');
                     estadoTd.textContent = passageiro.estado;
                     tr.appendChild(estadoTd);
+
+                    const cartaoTd = document.createElement('td');
+                    cartaoTd.textContent = passageiro.numeroCartao;
+                    tr.appendChild(cartaoTd);
 
                     const acoesTd = document.createElement('td');
                 const exibirLink = `<a class="btn btn-primary mr-2" href="/admin/passageiro/exibir/${passageiro.id}">Exibir</a>`;

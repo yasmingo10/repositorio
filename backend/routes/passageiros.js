@@ -28,7 +28,9 @@ router.post('/cadastrar', async function (req, res, next) {
           cidade,
           estado,
           saldo,
-          recarga: recargaData 
+          recarga: recargaData,
+          numeroCartao,
+
       } = req.body;
 
       const novoPassageiro = await prisma.passageiro.create({
@@ -42,7 +44,8 @@ router.post('/cadastrar', async function (req, res, next) {
               endereco,
               cidade,
               estado,
-              saldo
+              saldo,
+            numeroCartao,
           }
       });
 
@@ -86,6 +89,7 @@ router.patch('/editar/:id', async (req, res) => {
     const endereco = req.body.endereco || null;
     const cidade = req.body.cidade || null;
     const estado = req.body.estado || null;
+    const numeroCartao =  req.body.numeroCartao || null;
 
     const passageiroAtualizado = await prisma.passageiro.update({
       where: { id },
@@ -99,6 +103,7 @@ router.patch('/editar/:id', async (req, res) => {
         endereco,
         cidade,
         estado,
+        numeroCartao,
       },
     });
 

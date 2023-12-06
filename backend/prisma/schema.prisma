@@ -31,18 +31,19 @@ model onibus {
 }
 
 model passageiro {
-  id         Int       @id @default(autoincrement())
-  cpf        String    @unique @db.Char(16)
-  nome       String    @db.VarChar(100)
-  nascimento DateTime  @db.Date
-  sexo       String?   @db.Char(1)
-  email      String    @db.VarChar(250)
-  telefone   String    @db.VarChar(20)
-  endereco   String?   @db.VarChar(45)
-  cidade     String    @db.VarChar(45)
-  estado     String    @db.Char(2)
-  saldo      Decimal   @db.Decimal(6, 2)
-  recargas   recarga[]
+  id           Int       @id @default(autoincrement())
+  cpf          String    @unique @db.Char(16)
+  nome         String    @db.VarChar(100)
+  nascimento   DateTime  @db.Date
+  sexo         String?   @db.Char(1)
+  email        String    @db.VarChar(250)
+  telefone     String    @db.VarChar(20)
+  endereco     String?   @db.VarChar(45)
+  cidade       String    @db.VarChar(45)
+  estado       String    @db.Char(2)
+  saldo        Decimal   @db.Decimal(6, 2)
+  numeroCartao String?   @unique
+  recargas     recarga[]
 }
 
 model recarga {
